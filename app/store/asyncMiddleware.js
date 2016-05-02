@@ -27,20 +27,16 @@ export default function asyncActionMiddleware ({dispatch, getState}) {
 }
 
 function dispatchSuccess (dispatch, type, payload) {
-  return response => {
-    console.log('das response', response);
-    dispatch({
+  return response => dispatch({
     type,
     payload,
     response,
     status: STATUS_SUCCESS
-    });
-  }
+  });
 }
 
 function dispatchFailure (dispatch, type, payload) {
   return error => {
-    console.log('das error', error);
     dispatch({
       type,
       payload,
