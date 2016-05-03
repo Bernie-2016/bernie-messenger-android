@@ -1,5 +1,6 @@
 import * as Types from './types';
 import * as AssignmentService from '../utils/assignments';
+import {Actions as RouterActions} from 'react-native-router-flux';
 
 export function getAssignments () {
   return {
@@ -39,5 +40,25 @@ export function textContact (contact) {
   return {
     type: Types.TEXT_CONTACT,
     contact
+  };
+}
+
+export function showConfirmation () {
+  return {
+    type: Types.SHOW_CALL_CONFIRM
+  };
+}
+
+export function callConfirmed () {
+  RouterActions.pop();
+  return {
+    type: Types.CALL_CONFIRMED
+  };
+}
+
+export function callUnconfirmed () {
+  RouterActions.pop();
+  return {
+    type: Types.CALL_UNCONFIRMED
   };
 }

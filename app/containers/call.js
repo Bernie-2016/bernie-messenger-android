@@ -2,6 +2,7 @@ import React, {
   ListView,
   StyleSheet,
   TouchableHighlight,
+  TouchableOpacity,
   Text,
   View
 } from 'react-native';
@@ -53,6 +54,25 @@ class Call extends React.Component {
         >
           <Text style={styles.buttonText}>Call</Text>
         </TouchableHighlight>
+        {this.props.confirmCall &&
+        <View style={styles.overlay}>
+          <View style={styles.overlayInset}>
+            <View style={styles.overlayTitleContainer}>
+              <Text style={styles.overlayTitle}>Was your call successful?</Text>
+            </View>
+            <View style={styles.buttonGroup}>
+              <TouchableOpacity
+                style={[styles.buttonGroupItem, {borderRightWidth: 1, borderRightColor: Colors.Gray.Light}]}
+                onPress={() => this.props.dispatch(AssignmentActions.callConfirmed())}>
+                  <Text style={styles.yes}>Yes</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonGroupItem} onPress={() => this.props.dispatch(AssignmentActions.callUnconfirmed())}>
+                <Text style={styles.no}>No</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        }
       </Screen>
     );
   }
@@ -78,6 +98,49 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: Colors.White
+  },
+  overlay: {
+    position: 'absolute',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  overlayInset: {
+    width: 300,
+    height: 200,
+    borderWidth: 1,
+    borderColor: Colors.Gray.Light,
+    borderRadius: 5
+  },
+  overlayTitleContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.Gray.Light
+  },
+  overlayTitle: {
+    color: '#000',
+    fontSize: 20
+  },
+  buttonGroup: {
+    flexDirection: 'row'
+  },
+  buttonGroupItem: {
+    flex: 1,
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  yes: {
+    color: Colors.Green.Normal
+  },
+  no:{
+    color: Colors.Red.Light
   }
 });
 
