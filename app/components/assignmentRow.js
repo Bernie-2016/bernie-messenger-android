@@ -10,6 +10,7 @@ export default function AssignmentRow ({assignment, onPress}) {
   return (
     <TouchableHighlight
       onPress={() => onPress()}
+      underlayColor={Colors.Gray.Light}
       style={styles.container}
     >
       <View>
