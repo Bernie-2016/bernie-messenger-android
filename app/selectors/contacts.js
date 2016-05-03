@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {transformContactEntity} from '../entities/contact';
+import {transformContactEntity} from '../entities/transformers/contact';
 
 const contactEntitiesSelector = state => state.entities.contact;
 

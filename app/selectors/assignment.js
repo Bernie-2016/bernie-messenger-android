@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
-import {transformContactEntity} from '../entities/contact';
+import {transformAssignmentEntity} from '../entities/transformers/assignment';
+import {transformContactEntity} from '../entities/transformers/contact';
 
 const assignmentEntitiesSelector = state => state.entities.assignment;
 const contactEntitiesSelector = state => state.entities.contact;
@@ -8,23 +9,30 @@ const selectedContactSelector = state => state.assignment.contact;
 const calledSelector = state => state.assignment.called;
 const textedSelector = state => state.assignment.texted;
 
-export const assignmentSelector = createSelector(
-  assignmentEntitiesSelector,
-  selectedAssignmentSelector,
-  (assignmentEntities, selectedAssignment) => assignmentEntities[selectedAssignment]
-);
-
 export const contactSelector = createSelector(
   contactEntitiesSelector,
   selectedContactSelector,
   (contactEntities, selectedContact) => {
     var contact = contactEntities[selectedContact];
-    if (!contact) {
-      return null;
+    if (contact) {
+      return transformContactEntity(contact);
     }
-    return transformContactEntity(contact);
+    return null;
   }
 );
+
+export const assignmentSelector = createSelector(
+  assignmentEntitiesSelector,
+  selectedAssignmentSelector,
+  contactSelector,
+  (assignmentEntities, selectedAssignment, contact) => {
+    var assignment = assignmentEntities[selectedAssignment];
+    if (assignment) {
+      return transformAssignmentEntity(assignment, contact);
+    }
+    return null;
+  }
+)
 
 export default createSelector(
   assignmentSelector,
