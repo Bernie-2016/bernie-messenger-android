@@ -1,4 +1,5 @@
 import {createSelector} from 'reselect';
+import {transformContactEntity} from '../entities/contact';
 
 const contactEntitiesSelector = state => state.entities.contact;
 
@@ -24,16 +25,6 @@ const contactsSelector = createSelector(
     });
   }
 );
-
-function transformContactEntity (contact) {
-  return {
-    id: contact.id,
-    firstName: contact.givenName,
-    lastName: contact.familyName,
-    emailAddresses: contact.emailAddresses,
-    phoneNumbers: contact.phoneNumbers
-  };
-}
 
 export default createSelector(
   contactsSelector,

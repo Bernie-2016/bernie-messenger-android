@@ -21,3 +21,17 @@ export function selectContact (contact) {
     contact
   };
 }
+
+export function callContact (contact) {
+  return {
+    type: Types.CALL_CONTACT,
+    contact
+  };
+}
+
+export function textContact (contact) {
+  return {
+    type: Types.TEXT_CONTACT,
+    contact
+  };
+}

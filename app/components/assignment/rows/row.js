@@ -31,6 +31,7 @@ export default function AssignmentRow ({enabled, icon, onPress, text, title}) {
 }
 
 AssignmentRow.propTypes = {
+  enabled: PropTypes.bool,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,

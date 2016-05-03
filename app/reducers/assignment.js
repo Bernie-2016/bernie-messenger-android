@@ -14,6 +14,21 @@ export default function assignmentReducer (state = initialState, action) {
         ...state,
         assignment: action.assignment
       };
+    case Type.SELECT_CONTACT:
+      return {
+        ...state,
+        contact: action.contact
+      };
+    case Type.CALL_CONTACT:
+      return {
+        ...state,
+        called: true
+      };
+    case Type.TEXT_CONTACT:
+      return {
+        ...state,
+        texted: true
+      };
     default:
       return state;
   }

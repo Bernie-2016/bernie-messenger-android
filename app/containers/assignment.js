@@ -5,6 +5,8 @@ import React, {
   Text
 } from 'react-native';
 import {connect} from 'react-redux';
+import {Actions as RouterActions} from 'react-native-router-flux';
+import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Colors from '../constants/colors';
 import StyleRules from '../constants/styleRules';
@@ -24,23 +26,23 @@ class Assignment extends React.Component {
             <Text style={styles.byline}>{assignment.description}</Text>
           </View>
           <ContactRow
-            contact={null}
-            onPress={() => {}}
+            contact={this.props.contact}
+            onPress={() => RouterActions.contactSelector()}
           />
           {assignment.callActions.length > 0 &&
             <CallRow
-              contact={null}
+              contact={this.props.contact}
               callAction={assignment.callActions[0]}
-              enabled
-              onPress={() => {}}
+              enabled={this.props.called}
+              onPress={() => this.props.dispatch(AssignmentActions.callContact(this.props.contact.id))}
             />
           }
           {assignment.textActions.length > 0 &&
             <TextRow
-              contact={null}
-              enabled
+              contact={this.props.contact}
+              enabled={this.props.texted}
               textAction={assignment.textActions[0]}
-              onPress={() => {}}
+              onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id))}
             />
           }
         </ScrollView>

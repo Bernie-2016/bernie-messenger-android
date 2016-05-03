@@ -5,8 +5,9 @@ export default function ContactRow ({contact, ...props}) {
   return (
     <AssignmentRow
       title="My Contact"
-      text="Select a contact"
       icon="user-plus"
+      text={contact ? contact.fullName : 'Select a contact'}
+      enabled={!!contact}
       {...props}
     />
   );

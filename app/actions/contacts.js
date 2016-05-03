@@ -7,3 +7,10 @@ export function getContacts () {
     asyncAction: () => ContactService.getContacts()
   };
 }
+
+export function selectContact (contact) {
+  return {
+    type: Types.SELECT_CONTACT,
+    contact
+  };
+}
