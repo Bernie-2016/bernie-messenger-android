@@ -7,3 +7,10 @@ export function getAssignments () {
     asyncAction: () => AssignmentService.getAssignments()
   };
 }
+
+export function selectAssignment (assignment) {
+  return {
+    type: Types.SELECT_ASSIGNMENT,
+    assignment
+  };
+}

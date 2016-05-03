@@ -5,8 +5,10 @@ import React, {
   Text
 } from 'react-native';
 import {connect} from 'react-redux';
+import {Actions as RouterActions} from 'react-native-router-flux';
 import * as AssignmentActions from '../actions/assignments';
 import AssignmentRow from '../components/assignmentRow';
+import Screen from '../components/screen';
 import assignmentsSelector from '../selectors/assignments';
 
 class Assignments extends React.Component {
@@ -32,24 +34,29 @@ class Assignments extends React.Component {
     }
   }
 
+  selectAssignment (assignment) {
+    this.props.dispatch(AssignmentActions.selectAssignment(assignment.id));
+    RouterActions.assignment();
+  }
+
   renderRow (assignment) {
     return (
       <AssignmentRow
         assignment={assignment}
-        onPress={assignment => this.selectAssignment(assignment)}
+        onPress={() => this.selectAssignment(assignment)}
       />
     );
   }
 
   render () {
     return (
-      <View style={{flex: 1, paddingTop: 60}}>
+      <Screen>
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
+          renderRow={assignment => this.renderRow(assignment)}
         />
-      </View>
+      </Screen>
     );
   }
 }
