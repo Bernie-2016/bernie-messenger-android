@@ -6,6 +6,7 @@ export default function ContactRow ({contact, ...props}) {
     <AssignmentRow
       title="My Contact"
       text="Select a contact"
+      icon="user-plus"
       {...props}
     />
   );

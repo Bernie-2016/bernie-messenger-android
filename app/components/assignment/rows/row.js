@@ -6,8 +6,9 @@ import React, {
   Text
 } from 'react-native';
 import Colors from '../../../constants/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function AssignmentRow ({title, text, icon, onPress}) {
+export default function AssignmentRow ({enabled, icon, onPress, text, title}) {
   return (
     <TouchableHighlight
       onPress={() => onPress()}
@@ -15,7 +16,11 @@ export default function AssignmentRow ({title, text, icon, onPress}) {
       style={styles.row}
     >
       <View style={styles.inset}>
-        <Text style={styles.icon}>I</Text>
+        <Icon
+          name={icon}
+          size={18}
+          color={enabled ? Colors.Green.Normal : Colors.Gray.Normal}
+        />
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.text}>{text}</Text>
@@ -28,7 +33,7 @@ export default function AssignmentRow ({title, text, icon, onPress}) {
 AssignmentRow.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  //icon: PropTypes.text.isRequired,
+  icon: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired
 };
 
@@ -43,7 +48,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   content: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginLeft: 20
   },
   title: {
     fontSize: 18,

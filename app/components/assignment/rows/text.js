@@ -6,6 +6,7 @@ export default function TextRow ({contact, textAction, ...props}) {
     <AssignmentRow
       title="Text Person"
       text={textAction.name}
+      icon="comment"
       {...props}
     />
   );

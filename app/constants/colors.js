@@ -8,6 +8,9 @@ const Colors = {
     Normal: '#757575',
     Dark: '#384552'
   },
+  Green: {
+    Normal: '#228800'
+  },
   Red: {
     Light: '#f55b5b'
   },

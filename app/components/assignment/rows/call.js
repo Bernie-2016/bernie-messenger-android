@@ -6,6 +6,7 @@ export default function CallRow ({contact, callAction, ...props}) {
     <AssignmentRow
       title="Call Person"
       text={callAction.name}
+      icon="phone"
       {...props}
     />
   );
