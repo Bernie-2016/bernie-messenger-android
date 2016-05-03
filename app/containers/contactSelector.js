@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   StyleSheet,
   TouchableHighlight,
   ListView,
@@ -12,11 +13,18 @@ import * as ContactActions from '../actions/contacts';
 import Screen from '../components/screen';
 
 class ContactSelector extends React.Component {
+  static propTypes = {
+    contacts: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
   constructor (props) {
+    var dataSource;
     super(props);
-    var dataSource = new ListView.DataSource({
+
+    dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
+
     this.state = {
       dataSource: dataSource.cloneWithRows([])
     };
@@ -35,7 +43,6 @@ class ContactSelector extends React.Component {
   }
 
   selectContact (contact) {
-    console.log('selected', contact);
     this.props.dispatch(ContactActions.selectContact(contact.id));
     RouterActions.pop();
   }
@@ -51,7 +58,7 @@ class ContactSelector extends React.Component {
           <Text style={styles.phone}>{contact.phoneNumbers[0].number}</Text>
         </View>
       </TouchableHighlight>
-    )
+    );
   }
 
   render () {
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
 
   },
   phone: {
-    
+
   }
 });
 

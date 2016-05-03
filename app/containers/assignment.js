@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   ScrollView,
   StyleSheet,
   View,
@@ -16,6 +17,13 @@ import CallRow from '../components/assignment/rows/call';
 import TextRow from '../components/assignment/rows/text';
 
 class Assignment extends React.Component {
+  static propTypes = {
+    assignment: PropTypes.object.isRequired,
+    contact: PropTypes.object,
+    called: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    texted: PropTypes.bool.isRequired
+  };
   componentWillUnmount () {
     this.props.dispatch(AssignmentActions.resetAssignment());
   }

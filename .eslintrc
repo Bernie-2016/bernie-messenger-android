@@ -21,6 +21,15 @@
     "no-use-before-define": 0,
     "object-curly-spacing": 0,
     "new-cap": 0,
-    "space-before-function-paren": ["error", "always"]
+    "space-before-function-paren": ["error", "always"],
+    "no-var": 0,
+    "arrow-body-style": 0,
+    "max-len": [2, 120, 2],
+    "no-restricted-syntax": [
+      2,
+      "DebuggerStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ]
   }
 }

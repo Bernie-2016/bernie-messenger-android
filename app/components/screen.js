@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   StyleSheet,
   View
 } from 'react-native';
@@ -14,6 +15,11 @@ export default function Screen ({children, style, ...props}) {
     </View>
   );
 }
+
+Screen.propTypes = {
+  style: View.propTypes.style,
+  children: PropTypes.node
+};
 
 const styles = StyleSheet.create({
   view: {

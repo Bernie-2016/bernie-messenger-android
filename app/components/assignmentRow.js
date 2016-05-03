@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   StyleSheet,
   TouchableHighlight,
   Text,
@@ -20,6 +21,11 @@ export default function AssignmentRow ({assignment, onPress}) {
     </TouchableHighlight>
   );
 }
+
+AssignmentRow.propTypes = {
+  assignment: PropTypes.object.isRequired,
+  onPress: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {

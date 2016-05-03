@@ -11,7 +11,7 @@ export function* callContact () {
   yield call(CommunicationsModule.createPhoneCall, contact.phoneNumbers[0].raw);
 }
 
-export function* textContact (action) {
+export function* textContact () {
   var contact = yield select(contactSelector);
   var {textActions} = yield select(assignmentSelector);
   yield call(CommunicationsModule.createSMSMessage, contact.phoneNumbers[0].raw, textActions[0].messageContent);

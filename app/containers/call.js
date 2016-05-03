@@ -1,5 +1,6 @@
 import React, {
   ListView,
+  PropTypes,
   StyleSheet,
   TouchableHighlight,
   Text,
@@ -12,11 +13,19 @@ import Colors from '../constants/colors';
 import Screen from '../components/screen';
 
 class Call extends React.Component {
+  static propTypes = {
+    assignment: PropTypes.object.isRequired,
+    contact: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
   constructor (props) {
+    var dataSource;
     super(props);
-    var dataSource = new ListView.DataSource({
+
+    dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
+
     this.state = {
       dataSource: dataSource.cloneWithRows(props.assignment.callActions)
     };
@@ -25,18 +34,18 @@ class Call extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (this.props.assignment.callActions !== nextProps.assignment.callActions) {
       this.setState({
-        dataSource: dataSource.cloneWithRows(nextProps.assignment.callActions)
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.assignment.callActions)
       });
     }
   }
 
-  renderRow ({id, name, callScript}) {
+  renderRow ({name, callScript}) {
     return (
       <View style={styles.row}>
         <Text style={styles.title}>{name}</Text>
         <Text style={styles.script}>{callScript}</Text>
       </View>
-    )
+    );
   }
 
   render () {

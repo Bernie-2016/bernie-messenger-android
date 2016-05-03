@@ -32,7 +32,7 @@ export const assignmentSelector = createSelector(
     }
     return null;
   }
-)
+);
 
 export default createSelector(
   assignmentSelector,

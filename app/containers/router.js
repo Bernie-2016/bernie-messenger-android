@@ -43,7 +43,8 @@ const scenes = Actions.create(
   <Scene
     key="root"
     sceneStyle={{backgroundColor: 'blue'}}
-    navigationBarStyle={styles.navBar}>
+    navigationBarStyle={styles.navBar}
+  >
     <Scene
       key="assignments"
       renderTitle={() => <NavLogo />}

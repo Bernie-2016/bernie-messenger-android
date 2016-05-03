@@ -1,8 +1,7 @@
 import React, {
   ListView,
-  StyleSheet,
-  View,
-  Text
+  PropTypes,
+  StyleSheet
 } from 'react-native';
 import {connect} from 'react-redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
@@ -13,13 +12,20 @@ import Screen from '../components/screen';
 import assignmentsSelector from '../selectors/assignments';
 
 class Assignments extends React.Component {
+  static propTypes = {
+    assignments: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
   constructor (props) {
+    var dataSource;
     super(props);
-    var ds = new ListView.DataSource({
+
+    dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
+
     this.state = {
-      dataSource: ds.cloneWithRows([])
+      dataSource: dataSource.cloneWithRows([])
     };
   }
 
@@ -67,6 +73,6 @@ const styles = StyleSheet.create({
   listView: {
     flex: 1
   }
-})
+});
 
 export default connect(assignmentsSelector)(Assignments);

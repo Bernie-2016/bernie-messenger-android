@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign, no-underscore-dangle */
+
 import {normalize, arrayOf, Schema} from 'normalizr';
 
 const Assignment = new Schema('assignment');
