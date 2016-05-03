@@ -14,3 +14,10 @@ export function selectAssignment (assignment) {
     assignment
   };
 }
+
+export function selectContact (contact) {
+  return {
+    type: Types.SELECT_CONTACT,
+    contact
+  };
+}

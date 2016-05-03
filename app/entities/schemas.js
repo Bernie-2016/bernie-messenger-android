@@ -1,7 +1,9 @@
 import {normalize, arrayOf, Schema} from 'normalizr';
 
 const Assignment = new Schema('assignment');
-const Contact = new Schema('contact');
+const Contact = new Schema('contact', {
+  idAttribute: entity => entity.recordID
+});
 
 function idsFromResponse (response) {
   if (Array.isArray(response)) {

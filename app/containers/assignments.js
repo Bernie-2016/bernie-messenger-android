@@ -7,6 +7,7 @@ import React, {
 import {connect} from 'react-redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import * as AssignmentActions from '../actions/assignments';
+import * as ContactActions from '../actions/contacts';
 import AssignmentRow from '../components/assignmentRow';
 import Screen from '../components/screen';
 import assignmentsSelector from '../selectors/assignments';
@@ -24,6 +25,7 @@ class Assignments extends React.Component {
 
   componentDidMount () {
     this.props.dispatch(AssignmentActions.getAssignments());
+    this.props.dispatch(ContactActions.getContacts());
   }
 
   componentWillReceiveProps (nextProps) {

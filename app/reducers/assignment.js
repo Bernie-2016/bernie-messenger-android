@@ -1,7 +1,10 @@
 import * as Type from '../actions/types';
 
 const initialState = {
-  assignment: null
+  assignment: null,
+  contact: null,
+  called: false,
+  texted: false
 };
 
 export default function assignmentReducer (state = initialState, action) {

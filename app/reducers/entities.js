@@ -3,11 +3,12 @@ import {Schemas, entitiesFromResponse} from '../entities/schemas';
 
 const initialState = {
   assignment: {},
-  contacts: {}
+  contact: {}
 };
 
 const actionTypeToSchema = {
-  [Types.GET_ASSIGNMENTS]: Schemas.Assignment
+  [Types.GET_ASSIGNMENTS]: Schemas.Assignment,
+  [Types.GET_CONTACTS]: Schemas.Contact
 }
 
 export default function entityReducer (state = initialState, action) {
