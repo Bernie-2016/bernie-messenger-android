@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "moment": "^2.13.0",
+    "normalizr": "^2.0.1",
     "react": "^0.14.8",
     "react-native": "^0.24.1",
     "react-native-router-flux": "^3.22.23",
