@@ -8,13 +8,13 @@ const selectedContactSelector = state => state.assignment.contact;
 const calledSelector = state => state.assignment.called;
 const textedSelector = state => state.assignment.texted;
 
-const assignmentSelector = createSelector(
+export const assignmentSelector = createSelector(
   assignmentEntitiesSelector,
   selectedAssignmentSelector,
   (assignmentEntities, selectedAssignment) => assignmentEntities[selectedAssignment]
 );
 
-const contactSelector = createSelector(
+export const contactSelector = createSelector(
   contactEntitiesSelector,
   selectedContactSelector,
   (contactEntities, selectedContact) => {

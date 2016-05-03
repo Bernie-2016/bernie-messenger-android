@@ -6,6 +6,8 @@ import {Actions, Router, Reducer, Scene} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import Assignments from './assignments';
 import Assignment from './assignment';
+import Call from './call';
+import Text from './text';
 import ContactSelector from './contactSelector';
 import NavLogo from '../components/nav/logo';
 import Colors from '../constants/colors';
@@ -52,6 +54,16 @@ const scenes = Actions.create(
       key="assignment"
       renderTitle={() => <NavLogo />}
       component={Assignment}
+    />
+    <Scene
+      key="call"
+      renderTitle={() => <NavLogo />}
+      component={Call}
+    />
+    <Scene
+      key="text"
+      renderTitle={() => <NavLogo />}
+      component={Text}
     />
     <Scene
       key="contactSelector"

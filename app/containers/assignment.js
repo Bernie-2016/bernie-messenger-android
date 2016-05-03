@@ -34,7 +34,7 @@ class Assignment extends React.Component {
               contact={this.props.contact}
               callAction={assignment.callActions[0]}
               enabled={this.props.called}
-              onPress={() => this.props.dispatch(AssignmentActions.callContact(this.props.contact.id))}
+              onPress={() => RouterActions.call()}
             />
           }
           {assignment.textActions.length > 0 &&
@@ -42,7 +42,7 @@ class Assignment extends React.Component {
               contact={this.props.contact}
               enabled={this.props.texted}
               textAction={assignment.textActions[0]}
-              onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id))}
+              onPress={() => RouterActions.text()}
             />
           }
         </ScrollView>
