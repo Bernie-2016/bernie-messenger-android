@@ -12,6 +12,7 @@ export default function CallRow ({contact, callAction, ...props}) {
       title="Call Person"
       text={text}
       icon="phone"
+      enabled={!!contact}
       {...props}
     />
   );

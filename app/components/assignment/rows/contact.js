@@ -7,7 +7,8 @@ export default function ContactRow ({contact, ...props}) {
       title="My Contact"
       icon="user-plus"
       text={contact ? contact.fullName : 'Select a contact'}
-      enabled={!!contact}
+      completed={!!contact}
+      enabled
       {...props}
     />
   );

@@ -33,14 +33,15 @@ class Assignment extends React.Component {
             <CallRow
               contact={this.props.contact}
               callAction={assignment.callActions[0]}
-              enabled={this.props.called}
+              completed={this.props.called}
               onPress={() => RouterActions.call()}
             />
           }
           {assignment.textActions.length > 0 &&
             <TextRow
               contact={this.props.contact}
-              enabled={this.props.texted}
+              completed={this.props.texted}
+              enabled={!!this.props.contact && (!assignment.requireCallFirst || this.props.called)}
               textAction={assignment.textActions[0]}
               onPress={() => RouterActions.text()}
             />

@@ -8,10 +8,11 @@ import React, {
 import Colors from '../../../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function AssignmentRow ({enabled, icon, onPress, text, title}) {
+export default function AssignmentRow ({completed, enabled, icon, onPress, text, title}) {
   return (
     <TouchableHighlight
       onPress={() => onPress()}
+      disabled={!enabled}
       underlayColor={Colors.Gray.Light}
       style={styles.row}
     >
@@ -19,12 +20,13 @@ export default function AssignmentRow ({enabled, icon, onPress, text, title}) {
         <Icon
           name={icon}
           size={18}
-          color={enabled ? Colors.Green.Normal : Colors.Gray.Normal}
+          color={completed ? Colors.Green.Normal : Colors.Gray.Normal}
         />
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.text}>{text}</Text>
         </View>
+        {!enabled && <View style={styles.disabledOverlay} />}
       </View>
     </TouchableHighlight>
   );
@@ -32,6 +34,7 @@ export default function AssignmentRow ({enabled, icon, onPress, text, title}) {
 
 AssignmentRow.propTypes = {
   enabled: PropTypes.bool,
+  completed: PropTypes.bool,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
@@ -59,5 +62,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 22,
     color: Colors.Gray.Dark
+  },
+  disabledOverlay: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
   }
 });
