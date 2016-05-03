@@ -18,7 +18,6 @@ export function* textContact (action) {
 }
 
 export function* watchCallContact () {
-  console.log('forked', Types.CALL_CONTACT)
   yield takeEvery(Types.CALL_CONTACT, callContact);
 }
 
