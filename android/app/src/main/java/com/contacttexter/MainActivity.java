@@ -37,6 +37,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new CommunicationsPackage(this),
             new ReactNativeContacts(),
             new VectorIconsPackage()
         );
