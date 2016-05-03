@@ -4,11 +4,12 @@ import React, {
   Text,
   View
 } from 'react-native';
+import Colors from '../constants/colors';
 
 export default function AssignmentRow ({assignment, onPress}) {
   return (
     <TouchableHighlight
-      onPress={onPress}
+      onPress={() => onPress()}
       style={styles.container}
     >
       <View>
@@ -24,11 +25,11 @@ const styles = StyleSheet.create({
     padding: 20
   },
   name: {
-    color: 'blue',
+    color: Colors.Blue.Normal,
     fontSize: 20
   },
   expires: {
-    color: 'red',
+    color: Colors.Red.Light,
     fontSize: 18,
     marginBottom: 10
   }

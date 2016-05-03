@@ -1,18 +1,13 @@
-import React, {PropTypes} from 'react-native';
+import React, {
+  PropTypes,
+  StyleSheet
+} from 'react-native';
 import {Actions, Router, Reducer, Scene} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import Assignments from './assignments';
-
-const scenes = Actions.create(
-  <Scene key="root">
-    <Scene
-      key="assignments"
-      title="Assignments"
-      initial
-      component={Assignments}
-    />
-  </Scene>
-);
+import Assignment from './assignment';
+import NavLogo from '../components/nav/logo';
+import Colors from '../constants/colors';
 
 class Routes extends React.Component {
   static propTypes = {
@@ -34,5 +29,30 @@ class Routes extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  navBar: {
+    backgroundColor: Colors.Blue.Light
+  }
+});
+
+const scenes = Actions.create(
+  <Scene
+    key="root"
+    sceneStyle={{backgroundColor: 'blue'}}
+    navigationBarStyle={styles.navBar}>
+    <Scene
+      key="assignments"
+      renderTitle={() => <NavLogo />}
+      initial
+      component={Assignments}
+    />
+    <Scene
+      key="assignment"
+      renderTitle={() => <NavLogo />}
+      component={Assignment}
+    />
+  </Scene>
+);
 
 export default connect()(Routes);
