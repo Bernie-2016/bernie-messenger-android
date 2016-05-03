@@ -6,8 +6,11 @@ import asyncMiddleware from './asyncMiddleware';
 import reducers from '../reducers';
 import sagas from '../sagas';
 
+const sagaMiddleware = createSagaMiddleware();
+
 const createStoreWithMiddelware = applyMiddleware(
   asyncMiddleware,
+  sagaMiddleware,
   createLogger({
     predicate: () => __DEV__
   }),
@@ -15,5 +18,7 @@ const createStoreWithMiddelware = applyMiddleware(
 )(createStore);
 
 const store = createStoreWithMiddelware(combineReducers(reducers));
+
+sagaMiddleware.run(sagas);
 
 export default store;

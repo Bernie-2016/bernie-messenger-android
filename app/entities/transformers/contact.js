@@ -5,6 +5,13 @@ export function transformContactEntity (contact) {
     lastName: contact.familyName,
     fullName: `${contact.givenName} ${contact.familyName}`,
     emailAddresses: contact.emailAddresses,
-    phoneNumbers: contact.phoneNumbers
+    phoneNumbers: contact.phoneNumbers.map(cleanPhoneNumber)
+  };
+}
+
+function cleanPhoneNumber (phoneNumberEntry) {
+  return {
+    ...phoneNumberEntry,
+    raw: phoneNumberEntry.number.replace(/[^0-9.]/g, '')
   };
 }
