@@ -2,6 +2,7 @@ import React, {
   ListView,
   StyleSheet,
   TouchableHighlight,
+  TouchableOpacity,
   Text,
   View
 } from 'react-native';
@@ -32,10 +33,12 @@ class TextScreen extends React.Component {
 
   renderRow ({id, name, messageContent}) {
     return (
+      <TouchableOpacity onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id))}>
       <View style={styles.row}>
         <Text style={styles.title}>{name}</Text>
         <Text style={styles.script}>{messageContent}</Text>
       </View>
+    </TouchableOpacity>
     )
   }
 

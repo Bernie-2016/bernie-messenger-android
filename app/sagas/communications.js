@@ -1,7 +1,7 @@
 import {NativeModules} from 'react-native';
 import {takeEvery} from 'redux-saga';
 import {call, fork, select} from 'redux-saga/effects';
-import {contactSelector} from '../selectors/assignment';
+import {contactSelector, assignmentSelector} from '../selectors/assignment';
 import * as Types from '../actions/types';
 
 const {CommunicationsModule} = NativeModules;
@@ -12,7 +12,9 @@ export function* callContact () {
 }
 
 export function* textContact (action) {
-
+  var contact = yield select(contactSelector);
+  var {textActions} = yield select(assignmentSelector);
+  yield call(CommunicationsModule.createSMSMessage, contact.phoneNumbers[0].raw, textActions[0].messageContent);
 }
 
 export function* watchCallContact () {
