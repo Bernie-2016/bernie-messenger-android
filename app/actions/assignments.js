@@ -15,6 +15,12 @@ export function selectAssignment (assignment) {
   };
 }
 
+export function resetAssignment () {
+  return {
+    type: Types.RESET_ASSIGNMENT
+  };
+}
+
 export function selectContact (contact) {
   return {
     type: Types.SELECT_CONTACT,

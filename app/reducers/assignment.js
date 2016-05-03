@@ -29,6 +29,8 @@ export default function assignmentReducer (state = initialState, action) {
         ...state,
         texted: true
       };
+    case Type.RESET_ASSIGNMENT:
+      return initialState;
     default:
       return state;
   }

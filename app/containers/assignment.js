@@ -16,6 +16,9 @@ import CallRow from '../components/assignment/rows/call';
 import TextRow from '../components/assignment/rows/text';
 
 class Assignment extends React.Component {
+  componentWillUnmount () {
+    this.props.dispatch(AssignmentActions.resetAssignment());
+  }
   render () {
     var {assignment} = this.props;
     return (
