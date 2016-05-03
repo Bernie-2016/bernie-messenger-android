@@ -33,4 +33,13 @@ public class CommunicationsModule extends ReactContextBaseJavaModule {
         callIntent.setData(Uri.parse("tel:" + number));
         activity.startActivity(callIntent);
     }
+
+    @ReactMethod
+    public void createSMSMessage(String number, String message) {
+        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", number);
+        smsIntent.putExtra("sms_body", message);
+        activity.startActivity(smsIntent);
+    }
 }
