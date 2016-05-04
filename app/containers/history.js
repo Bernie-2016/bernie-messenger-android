@@ -1,12 +1,17 @@
 import React, {
   ListView,
   StyleSheet,
-  PropTypes
+  PropTypes,
+  View,
+  Text
 } from 'react-native';
 import {connect} from 'react-redux';
 import selector from '../selectors/history';
+import Colors from '../constants/colors';
 import HistoryRow from '../components/history/row';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Screen from '../components/screen';
+import StyleRules from '../constants/styleRules';
 
 class History extends React.Component {
   static propTypes = {
@@ -28,11 +33,21 @@ class History extends React.Component {
   render () {
     return (
       <Screen>
-        <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={action => <HistoryRow task={action} />}
-        />
+        {this.props.history.length > 0 &&
+          <ListView
+            style={styles.listView}
+            dataSource={this.state.dataSource}
+            renderRow={action => <HistoryRow task={action} />}
+          />
+        }
+        {this.props.history.length === 0 &&
+          <View style={styles.emptyContainer}>
+            <Icon name="inbox" size={82} color={Colors.Gray.Light} />
+            <Text style={styles.emptyText}>
+              You haven't completed any tasks. Check back in after you've contacted some friends
+            </Text>
+          </View>
+        }
       </Screen>
     );
   }
@@ -41,6 +56,17 @@ class History extends React.Component {
 const styles = StyleSheet.create({
   listView: {
     flex: 1
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: StyleRules.ScreenPadding
+  },
+  emptyText: {
+    color: Colors.Gray.Light,
+    textAlign: 'center',
+    fontSize: 18
   }
 });
 
