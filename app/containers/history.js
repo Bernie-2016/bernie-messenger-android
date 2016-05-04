@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import selector from '../selectors/history';
 import Colors from '../constants/colors';
 import HistoryRow from '../components/history/row';
+import I18n from '../localization';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Screen from '../components/screen';
 import StyleRules from '../constants/styleRules';
@@ -43,9 +44,7 @@ class History extends React.Component {
         {this.props.history.length === 0 &&
           <View style={styles.emptyContainer}>
             <Icon name="inbox" size={82} color={Colors.Gray.Light} />
-            <Text style={styles.emptyText}>
-              You haven't completed any tasks. Check back in after you've contacted some friends
-            </Text>
+            <Text style={styles.emptyText}>{I18n.t('history.empty')}</Text>
           </View>
         }
       </Screen>
