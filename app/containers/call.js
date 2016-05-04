@@ -58,7 +58,7 @@ class Call extends React.Component {
         />
         <TouchableHighlight
           style={styles.button}
-          onPress={() => this.props.dispatch(AssignmentActions.callContact(this.props.contact.id))}
+          onPress={() => this.props.dispatch(AssignmentActions.callContact(this.props.contact.id, this.props.assignment.id, this.props.assignment.callActions[0].id))}
         >
           <Text style={styles.buttonText}>Call</Text>
         </TouchableHighlight>

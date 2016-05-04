@@ -8,13 +8,21 @@ const {CommunicationsModule} = NativeModules;
 
 export function* callContact () {
   var contact = yield select(contactSelector);
-  yield call(CommunicationsModule.createPhoneCall, contact.phoneNumbers[0].raw);
+  try {
+    console.log('calling contact', contact)
+    yield call(CommunicationsModule.createPhoneCall, contact.phoneNumbers[0].raw);
+    console.log('reached')
+  } catch (err) {
+    console.log('ERR', err);
+  }
 }
 
-export function* textContact () {
+export function* textContact ({textAction}) {
   var contact = yield select(contactSelector);
   var {textActions} = yield select(assignmentSelector);
-  yield call(CommunicationsModule.createSMSMessage, contact.phoneNumbers[0].raw, textActions[0].messageContent);
+  var textActionMatch = textActions.filter(text => text.id === textAction);
+  var message = textActionMatch.length > 0 ? textActionMatch[0].messageContent : textActions[0].messageContent;
+  yield call(CommunicationsModule.createSMSMessage, contact.phoneNumbers[0].raw, message);
 }
 
 export function* watchCallContact () {

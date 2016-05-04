@@ -40,7 +40,7 @@ class TextScreen extends React.Component {
 
   renderRow ({id, name, messageContent}) {
     return (
-      <TouchableOpacity onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id, id))}>
+      <TouchableOpacity onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id, this.props.assignment.id, id))}>
         <View style={styles.row}>
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.script}>{messageContent}</Text>

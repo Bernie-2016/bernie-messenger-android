@@ -30,8 +30,8 @@ class Assignments extends React.Component {
   }
 
   componentDidMount () {
-    this.props.dispatch(AssignmentActions.getAssignments());
-    this.props.dispatch(ContactActions.getContacts());
+    //this.props.dispatch(AssignmentActions.getAssignments());
+    //this.props.dispatch(ContactActions.getContacts());
   }
 
   componentWillReceiveProps (nextProps) {

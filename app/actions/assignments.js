@@ -28,16 +28,20 @@ export function selectContact (contact) {
   };
 }
 
-export function callContact (contact) {
+export function callContact (contact, assignment, callAction) {
   return {
     type: Types.CALL_CONTACT,
-    contact
+    contact,
+    assignment,
+    callAction
   };
 }
 
-export function textContact (contact) {
+export function textContact (contact, assignment, textAction) {
   return {
     type: Types.TEXT_CONTACT,
-    contact
+    contact,
+    assignment,
+    textAction
   };
 }

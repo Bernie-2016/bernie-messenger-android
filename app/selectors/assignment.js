@@ -8,6 +8,7 @@ const selectedAssignmentSelector = state => state.assignment.assignment;
 const selectedContactSelector = state => state.assignment.contact;
 const calledSelector = state => state.assignment.called;
 const textedSelector = state => state.assignment.texted;
+const historySelector = state => state.assignmentHistory;
 
 export const contactSelector = createSelector(
   contactEntitiesSelector,
@@ -34,10 +35,38 @@ export const assignmentSelector = createSelector(
   }
 );
 
+export const completedCallActionsSelector = createSelector(
+  contactSelector,
+  assignmentSelector,
+  historySelector,
+  (contact, assignment, history) => {
+    var assignmentHistory = history[assignment.id];
+    if (contact && assignmentHistory[contact.id]) {
+      return Object.keys(assignmentHistory[contact.id].callActions);
+    }
+    return [];
+  }
+);
+
+export const completedTextActionsSelector = createSelector(
+  contactSelector,
+  assignmentSelector,
+  historySelector,
+  (contact, assignment, history) => {
+    var assignmentHistory = history[assignment.id];
+    if (contact && assignmentHistory[contact.id]) {
+      return Object.keys(assignmentHistory[contact.id].textActions);
+    }
+    return [];
+  }
+);
+
 export default createSelector(
   assignmentSelector,
   contactSelector,
   calledSelector,
   textedSelector,
-  (assignment, contact, called, texted) => ({assignment, contact, called, texted})
+  completedCallActionsSelector,
+  completedTextActionsSelector,
+  (assignment, contact, called, texted, completedCalls, completedTexts) => ({assignment, contact, called, texted, completedCalls, completedTexts})
 );
