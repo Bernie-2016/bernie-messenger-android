@@ -2,7 +2,7 @@ import React, {
   PropTypes,
   StyleSheet
 } from 'react-native';
-import {Actions, Router, Reducer, Scene} from 'react-native-router-flux';
+import {Actions, Router, Reducer} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import Assignments from './assignments';
 import Assignment from './assignment';
@@ -10,6 +10,7 @@ import Call from './call';
 import Text from './text';
 import ContactSelector from './contactSelector';
 import History from './history';
+import Scene from '../components/nav/scene';
 import NavIcon from '../components/nav/icon';
 import NavLogo from '../components/nav/logo';
 import Colors from '../constants/colors';
@@ -49,34 +50,35 @@ const scenes = Actions.create(
   >
     <Scene
       key="assignments"
-      renderTitle={() => <NavLogo />}
-      initial
+      renderBackButton={null}
       component={Assignments}
+      initial
     />
     <Scene
       key="assignment"
-      renderTitle={() => <NavLogo />}
-      renderRightButton={() => <NavIcon name="history" onPress={() => Actions.history()} />}
+      renderRightButton={() => (
+        <NavIcon
+          name="history"
+          position="right"
+          onPress={() => Actions.history()}
+        />
+      )}
       component={Assignment}
     />
     <Scene
       key="call"
-      renderTitle={() => <NavLogo />}
       component={Call}
     />
     <Scene
       key="text"
-      renderTitle={() => <NavLogo />}
       component={Text}
     />
     <Scene
       key="contactSelector"
-      renderTitle={() => <NavLogo />}
       component={ContactSelector}
     />
     <Scene
       key="history"
-      renderTitle={() => <NavLogo />}
       component={History}
     />
   </Scene>
