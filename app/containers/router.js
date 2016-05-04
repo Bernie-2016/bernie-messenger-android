@@ -12,7 +12,6 @@ import ContactSelector from './contactSelector';
 import History from './history';
 import Scene from '../components/nav/scene';
 import NavIcon from '../components/nav/icon';
-import NavLogo from '../components/nav/logo';
 import Colors from '../constants/colors';
 
 class Routes extends React.Component {
@@ -28,10 +27,46 @@ class Routes extends React.Component {
   };
   render () {
     return (
-      <Router
-        createReducer={this.createReducer}
-        scenes={scenes}
-      />
+      <Router createReducer={this.createReducer}>
+        <Scene
+          key="root"
+          navigationBarStyle={styles.navBar}
+        >
+          <Scene
+            key="assignments"
+            renderBackButton={null}
+            component={Assignments}
+            initial
+          />
+          <Scene
+            key="assignment"
+            component={Assignment}
+            renderRightButton={() => (
+              <NavIcon
+                name="history"
+                position="right"
+                onPress={() => Actions.history()}
+              />
+            )}
+          />
+          <Scene
+            key="call"
+            component={Call}
+          />
+          <Scene
+            key="text"
+            component={Text}
+          />
+          <Scene
+            key="contactSelector"
+            component={ContactSelector}
+          />
+          <Scene
+            key="history"
+            component={History}
+          />
+        </Scene>
+      </Router>
     );
   }
 }
@@ -41,47 +76,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Blue.Light
   }
 });
-
-const scenes = Actions.create(
-  <Scene
-    key="root"
-    sceneStyle={{backgroundColor: 'blue'}}
-    navigationBarStyle={styles.navBar}
-  >
-    <Scene
-      key="assignments"
-      renderBackButton={null}
-      component={Assignments}
-      initial
-    />
-    <Scene
-      key="assignment"
-      renderRightButton={() => (
-        <NavIcon
-          name="history"
-          position="right"
-          onPress={() => Actions.history()}
-        />
-      )}
-      component={Assignment}
-    />
-    <Scene
-      key="call"
-      component={Call}
-    />
-    <Scene
-      key="text"
-      component={Text}
-    />
-    <Scene
-      key="contactSelector"
-      component={ContactSelector}
-    />
-    <Scene
-      key="history"
-      component={History}
-    />
-  </Scene>
-);
 
 export default connect()(Routes);
