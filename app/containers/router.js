@@ -9,6 +9,7 @@ import Assignment from './assignment';
 import Call from './call';
 import Text from './text';
 import ContactSelector from './contactSelector';
+import NavIcon from '../components/nav/icon';
 import NavLogo from '../components/nav/logo';
 import Colors from '../constants/colors';
 
@@ -54,6 +55,8 @@ const scenes = Actions.create(
     <Scene
       key="assignment"
       renderTitle={() => <NavLogo />}
+      renderRightButton={() => <NavIcon name="history" onPress={() => {}} />}
+      onRight={() => {}}
       component={Assignment}
     />
     <Scene
