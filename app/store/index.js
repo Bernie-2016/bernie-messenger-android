@@ -10,16 +10,20 @@ import asyncMiddleware from './asyncMiddleware';
 import reducers from '../reducers';
 import sagas from '../sagas';
 
+// merge reducers into a tree
 const reducer = combineReducers(reducers);
 
+// compose the storage engine
 const storageWrappedReducers = storage.reducer(reducer);
 const engine = filter(createStorageEngine('state'), [
   'assignmentHistory'
 ]);
 const storageMiddleware = storage.createMiddleware(engine, [], [Types.CALL_CONTACT, Types.TEXT_CONTACT]);
 
+// create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
+// compose all the middlewares
 const createStoreWithMiddelware = applyMiddleware(
   asyncMiddleware,
   sagaMiddleware,
@@ -30,13 +34,14 @@ const createStoreWithMiddelware = applyMiddleware(
   storageMiddleware
 )(createStore);
 
-const store = createStoreWithMiddelware(combineReducers(reducers));
+// compose the story with the middleware and reducers
+const store = createStoreWithMiddelware(storageWrappedReducers);
 
+// create a storage loader and hydrate the store
 const stateLoader = storage.createLoader(engine);
-stateLoader(store)
-  .then(newState => console.log('loaded state', newState))
-  .catch(err => console.log('error loading state', err));
+stateLoader(store);
 
+// boot the sagas
 sagaMiddleware.run(sagas);
 
 export default store;

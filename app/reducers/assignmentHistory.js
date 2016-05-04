@@ -1,5 +1,4 @@
 import * as Types from '../actions/types';
-import {LOAD} from 'redux-storage';
 
 export default function assignmentHistoryReducer (state = {}, action) {
   switch (action.type) {
@@ -7,8 +6,6 @@ export default function assignmentHistoryReducer (state = {}, action) {
       return mergeCallAction(state, action.assignment, action.contact, action.callAction);
     case Types.TEXT_CONTACT:
       return mergeTextAction(state, action.assignment, action.contact, action.textAction);
-    case LOAD:
-      return action.payload.assignmentHistory;
     default:
       return state;
   }
