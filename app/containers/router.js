@@ -28,48 +28,26 @@ class Routes extends React.Component {
   render () {
     return (
       <Router createReducer={this.createReducer}>
-        <Scene
-          key="root"
-          navigationBarStyle={styles.navBar}
-        >
-          <Scene
-            key="assignments"
-            renderBackButton={null}
-            component={Assignments}
-            initial
-          />
-          <Scene
-            key="assignment"
-            component={Assignment}
-            renderRightButton={() => (
-              <NavIcon
-                name="history"
-                position="right"
-                onPress={() => Actions.history()}
-              />
-            )}
-          />
-          <Scene
-            key="call"
-            component={Call}
-          />
-          <Scene
-            key="text"
-            component={Text}
-          />
-          <Scene
-            key="contactSelector"
-            component={ContactSelector}
-          />
-          <Scene
-            key="history"
-            component={History}
-          />
+        <Scene key="root" navigationBarStyle={styles.navBar}>
+          <Scene key="assignments" component={Assignments} renderBackButton={null} initial />
+          <Scene key="assignment" component={Assignment} renderRightButton={historyIconRenderer} />
+          <Scene key="call" component={Call} />
+          <Scene key="text" component={Text} />
+          <Scene key="contactSelector" component={ContactSelector} />
+          <Scene key="history" component={History} />
         </Scene>
       </Router>
     );
   }
 }
+
+const historyIconRenderer = () => (
+  <NavIcon
+    name="history"
+    position="right"
+    onPress={() => Actions.history()}
+  />
+);
 
 const styles = StyleSheet.create({
   navBar: {
