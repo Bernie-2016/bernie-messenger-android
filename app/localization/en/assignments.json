@@ -1,0 +1,14 @@
+{
+  "options": {
+    "contact": {
+      "title": "My Contact",
+      "byline": "Select a contact"
+    },
+    "call": {
+      "title": "Call Person"
+    },
+    "text": {
+      "title": "Text Person"
+    }
+  }
+}
