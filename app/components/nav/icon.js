@@ -11,7 +11,7 @@ export default function NavIcon ({icon, onPress, position, ...props}) {
     <TouchableOpacity style={[styles.button, styles[position]]} onPress={() => onPress()}>
       <Icon
         name={icon}
-        size={18}
+        size={20}
         color={Colors.White}
         style={styles.icon}
         {...props}
@@ -24,14 +24,13 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: 4,
-    right: 2,
     padding: 8
   },
   left: {
-    left: 2
+    left: 4
   },
   right: {
-    right: 2
+    right: 4
   }
 });
 
