@@ -28,7 +28,11 @@ class Assignment extends React.Component {
     this.props.dispatch(AssignmentActions.resetAssignment());
   }
   render () {
-    var {assignment} = this.props;
+    var {
+      assignment,
+      completedCalls,
+      completedTexts
+    } = this.props;
     return (
       <Screen>
         <ScrollView>
@@ -44,15 +48,15 @@ class Assignment extends React.Component {
             <CallRow
               contact={this.props.contact}
               callAction={assignment.callActions[0]}
-              completed={this.props.called}
+              completed={completedCalls.length > 0}
               onPress={() => RouterActions.call()}
             />
           }
           {assignment.textActions.length > 0 &&
             <TextRow
               contact={this.props.contact}
-              completed={this.props.texted}
-              enabled={!!this.props.contact && (!assignment.requireCallFirst || this.props.called)}
+              completed={completedTexts.length > 0}
+              enabled={!!this.props.contact && (!assignment.requireCallFirst || completedCalls.length > 0)}
               textAction={assignment.textActions[0]}
               onPress={() => RouterActions.text()}
             />
