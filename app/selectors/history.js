@@ -7,7 +7,12 @@ import * as AssignmentActionType from '../constants/assignmentActionTypes';
 const currentAssignmentSelector = state => state.assignment.assignment;
 const assignmentEntitiesSelector = state => state.entities.assignment;
 const contactEntitiesSelector = state => state.entities.contact;
-const historySelector = state => state.assignmentHistory[state.assignment.assignment];
+const rawHistorySelector = state => state.assignmentHistory[state.assignment.assignment];
+
+const historySelector = createSelector(
+  rawHistorySelector,
+  (history) => history || {}
+);
 
 // map the assignment reference to the entity
 const assignmentSelector = createSelector(
