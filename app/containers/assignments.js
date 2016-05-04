@@ -4,17 +4,17 @@ import React, {
   StyleSheet
 } from 'react-native';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import * as AssignmentActions from '../actions/assignments';
-import * as ContactActions from '../actions/contacts';
 import AssignmentRow from '../components/assignmentRow';
 import Screen from '../components/screen';
-import assignmentsSelector from '../selectors/assignments';
+import selector from '../selectors/assignments';
 
 class Assignments extends React.Component {
   static propTypes = {
     assignments: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired
+    AssignmentActions: PropTypes.object.isRequired
   };
   constructor (props) {
     var dataSource;
@@ -29,11 +29,6 @@ class Assignments extends React.Component {
     };
   }
 
-  componentDidMount () {
-    //this.props.dispatch(AssignmentActions.getAssignments());
-    //this.props.dispatch(ContactActions.getContacts());
-  }
-
   componentWillReceiveProps (nextProps) {
     if (this.props.assignments !== nextProps.assignments) {
       this.setState({
@@ -43,7 +38,7 @@ class Assignments extends React.Component {
   }
 
   selectAssignment (assignment) {
-    this.props.dispatch(AssignmentActions.selectAssignment(assignment.id));
+    this.props.AssignmentActions.selectAssignment(assignment.id);
     RouterActions.assignment();
   }
 
@@ -75,4 +70,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(assignmentsSelector)(Assignments);
+const actions = dispatch => ({
+  AssignmentActions: bindActionCreators(AssignmentActions, dispatch)
+});
+
+export default connect(selector, actions)(Assignments);

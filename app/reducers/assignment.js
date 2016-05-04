@@ -3,8 +3,6 @@ import * as Type from '../actions/types';
 const initialState = {
   assignment: null,
   contact: null,
-  called: false,
-  texted: false
 };
 
 export default function assignmentReducer (state = initialState, action) {
@@ -18,16 +16,6 @@ export default function assignmentReducer (state = initialState, action) {
       return {
         ...state,
         contact: action.contact
-      };
-    case Type.CALL_CONTACT:
-      return {
-        ...state,
-        called: true
-      };
-    case Type.TEXT_CONTACT:
-      return {
-        ...state,
-        texted: true
       };
     case Type.RESET_ASSIGNMENT:
       return initialState;

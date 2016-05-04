@@ -7,6 +7,7 @@ import React, {
   View
 } from 'react-native';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Colors from '../constants/colors';
@@ -16,7 +17,7 @@ class Call extends React.Component {
   static propTypes = {
     assignment: PropTypes.object.isRequired,
     contact: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    AssignmentActions: PropTypes.object.isRequired
   };
   constructor (props) {
     var dataSource;
@@ -49,16 +50,18 @@ class Call extends React.Component {
   }
 
   render () {
+    var {assignment, contact} = this.props;
+    var callAction = assignment.callActions[0];
     return (
       <Screen>
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}
-          renderRow={callAction => this.renderRow(callAction)}
+          renderRow={data => this.renderRow(data)}
         />
         <TouchableHighlight
           style={styles.button}
-          onPress={() => this.props.dispatch(AssignmentActions.callContact(this.props.contact.id, this.props.assignment.id, this.props.assignment.callActions[0].id))}
+          onPress={() => this.props.AssignmentActions.callContact(contact.id, assignment.id, callAction.id)}
         >
           <Text style={styles.buttonText}>Call</Text>
         </TouchableHighlight>
@@ -90,4 +93,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(selector)(Call);
+const actions = dispatch => ({
+  AssignmentActions: bindActionCreators(AssignmentActions, dispatch)
+});
+
+export default connect(selector, actions)(Call);

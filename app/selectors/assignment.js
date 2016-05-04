@@ -6,8 +6,6 @@ const assignmentEntitiesSelector = state => state.entities.assignment;
 const contactEntitiesSelector = state => state.entities.contact;
 const selectedAssignmentSelector = state => state.assignment.assignment;
 const selectedContactSelector = state => state.assignment.contact;
-const calledSelector = state => state.assignment.called;
-const textedSelector = state => state.assignment.texted;
 const historySelector = state => state.assignmentHistory;
 
 export const contactSelector = createSelector(
@@ -64,9 +62,7 @@ export const completedTextActionsSelector = createSelector(
 export default createSelector(
   assignmentSelector,
   contactSelector,
-  calledSelector,
-  textedSelector,
   completedCallActionsSelector,
   completedTextActionsSelector,
-  (assignment, contact, called, texted, completedCalls, completedTexts) => ({assignment, contact, called, texted, completedCalls, completedTexts})
+  (assignment, contact, completedCalls, completedTexts) => ({assignment, contact, completedCalls, completedTexts})
 );

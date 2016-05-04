@@ -46,7 +46,3 @@ function mergeTextAction (state, assignment, contact, textAction) {
     }
   };
 }
-
-function mergeAction () {
-
-}

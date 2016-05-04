@@ -7,6 +7,7 @@ import React, {
   View
 } from 'react-native';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Screen from '../components/screen';
@@ -14,8 +15,8 @@ import Screen from '../components/screen';
 class TextScreen extends React.Component {
   static propTypes = {
     assignment: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    contact: PropTypes.object.isRequired
+    contact: PropTypes.object.isRequired,
+    AssignmentActions: PropTypes.object.isRequired
   };
   constructor (props) {
     var dataSource;
@@ -38,9 +39,10 @@ class TextScreen extends React.Component {
     }
   }
 
-  renderRow ({id, name, messageContent}) {
+  renderRow ({id: textId, name, messageContent}) {
+    var {contact, assignment} = this.props;
     return (
-      <TouchableOpacity onPress={() => this.props.dispatch(AssignmentActions.textContact(this.props.contact.id, this.props.assignment.id, id))}>
+      <TouchableOpacity onPress={() => this.props.AssignmentActions.textContact(contact.id, assignment.id, textId)}>
         <View style={styles.row}>
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.script}>{messageContent}</Text>
@@ -77,4 +79,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(selector)(TextScreen);
+const actions = dispatch => ({
+  AssignmentActions: bindActionCreators(AssignmentActions, dispatch)
+});
+
+export default connect(selector, actions)(TextScreen);

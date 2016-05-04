@@ -19,10 +19,10 @@ import TextRow from '../components/assignment/rows/text';
 class Assignment extends React.Component {
   static propTypes = {
     assignment: PropTypes.object.isRequired,
+    completedCalls: PropTypes.array.isRequired,
+    completedTexts: PropTypes.array.isRequired,
     contact: PropTypes.object,
-    called: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    texted: PropTypes.bool.isRequired
+    dispatch: PropTypes.func.isRequired
   };
   componentWillUnmount () {
     this.props.dispatch(AssignmentActions.resetAssignment());
