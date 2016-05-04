@@ -9,6 +9,9 @@ import HistoryRow from '../components/history/row';
 import Screen from '../components/screen';
 
 class History extends React.Component {
+  static propTypes = {
+    history: PropTypes.array.isRequired
+  };
   constructor (props) {
     var dataSource;
     super(props);
@@ -16,8 +19,8 @@ class History extends React.Component {
     dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-    console.log('PROPS', props)
-    this.state ={
+
+    this.state = {
       dataSource: dataSource.cloneWithRows(this.props.history)
     };
   }
