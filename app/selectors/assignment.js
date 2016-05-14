@@ -6,15 +6,20 @@ const assignmentEntitiesSelector = state => state.entities.assignment;
 const contactEntitiesSelector = state => state.entities.contact;
 const selectedAssignmentSelector = state => state.assignment.assignment;
 const selectedContactSelector = state => state.assignment.contact;
+const selectedContactNumberSelector = state => state.assignment.contactNumber;
 const historySelector = state => state.assignmentHistory;
 
 export const contactSelector = createSelector(
   contactEntitiesSelector,
   selectedContactSelector,
-  (contactEntities, selectedContact) => {
+  selectedContactNumberSelector,
+  (contactEntities, selectedContact, phoneNumber) => {
     var contact = contactEntities[selectedContact];
     if (contact) {
-      return transformContactEntity(contact);
+      return {
+        ...transformContactEntity(contact),
+        phoneNumber
+      };
     }
     return null;
   }

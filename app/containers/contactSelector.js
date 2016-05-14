@@ -43,7 +43,7 @@ class ContactSelector extends React.Component {
   }
 
   selectContact (contact) {
-    this.props.dispatch(ContactActions.selectContact(contact.id));
+    this.props.dispatch(ContactActions.selectContact(contact.id, contact.phoneNumber));
     RouterActions.pop();
   }
 
@@ -55,7 +55,7 @@ class ContactSelector extends React.Component {
       >
         <View style={styles.inset}>
           <Text style={styles.name}>{contact.fullName}</Text>
-          <Text style={styles.phone}>{contact.phoneNumbers[0].number}</Text>
+          <Text style={styles.phone}>{contact.phoneNumber}</Text>
         </View>
       </TouchableHighlight>
     );
