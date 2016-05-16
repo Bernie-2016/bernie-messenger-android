@@ -5,9 +5,12 @@ import React, {
   Text,
   View
 } from 'react-native';
+import moment from 'moment';
 import Colors from '../constants/colors';
+import I18n from '../localization';
 
 export default function AssignmentRow ({assignment, onPress}) {
+  var expiry = getExpiry(assignment.expires);
   return (
     <TouchableHighlight
       onPress={() => onPress()}
@@ -15,11 +18,20 @@ export default function AssignmentRow ({assignment, onPress}) {
       style={styles.container}
     >
       <View>
-        {assignment.expiresToday && <Text style={styles.expires}>Expires Today</Text>}
+        <Text style={styles.expires}>
+          {I18n.t('assignments.expires', {expiry})}
+        </Text>
         <Text style={styles.name}>{assignment.name}</Text>
       </View>
     </TouchableHighlight>
   );
+}
+
+function getExpiry (expires) {
+  if (expires.isSame(moment(), 'day')) {
+    return I18n.t('general.today');
+  }
+  return expires.format('MMMM, Do');
 }
 
 AssignmentRow.propTypes = {

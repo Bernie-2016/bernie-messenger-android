@@ -7,16 +7,10 @@ const assignmentsSelector = createSelector(
   assignmentEntitiesSelector,
   (assignmentEntities) => {
     return Object.keys(assignmentEntities)
-      .map(assignmentId => {
-        var assignment = assignmentEntities[assignmentId];
-        var expires = moment(assignment.expires);
-        var expiresToday = expires.isSame(moment(), 'day');
-        return {
-          ...assignment,
-          expires,
-          expiresToday
-        };
-      });
+      .map(assignmentId => ({
+        ...assignmentEntities[assignmentId],
+        expires: moment(assignmentEntities[assignmentId].expires)
+      }))
   }
 );
 

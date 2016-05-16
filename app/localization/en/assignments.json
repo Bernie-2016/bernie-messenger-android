@@ -1,4 +1,5 @@
 {
+  "expires": "Expires {{expiry}}",
   "options": {
     "contact": {
       "title": "My Contact",
