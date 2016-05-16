@@ -1,19 +1,19 @@
-# contact-texter-android
+# Bernie Messenger
 
 [![shield](https://circleci.com/gh/Bernie-2016/contact-texter-android.svg?style=shield&circle-token=a68fdc230e65184dd4e6b8e4e155607e6f5845ad)](https://circleci.com/gh/Bernie-2016/contact-texter-android/tree/develop)
 
-The Android version of the Contact Texter.
+The Android version of Bernie Messenger.
 
 ## Installation
 
 1. Clone the project
   ```
-  git clone git@github.com:Bernie-2016/contact-texter-android.git
+  git clone git@github.com:Bernie-2016/bernie-messenger-android.git
   ```
 
 2. Build the project
   ```
-  cd context-texter-android
+  cd bernie-messenger-android
   npm install
   ```
 
