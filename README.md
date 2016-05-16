@@ -27,3 +27,7 @@ The Android version of the Contact Texter.
 Please submit all Pull Requests from your fork to `develop`. If your changes touch code, please make sure to run `npm
 test` and verify that bother ESLint and tests pass. `develop` should only be merged into `master` when it has been
 determined to be stable and is ready for a release.
+
+## License
+
+This project is licensed under [AGPL](LICENSE).
