@@ -1,6 +1,6 @@
 # Bernie Messenger
 
-[![shield](https://circleci.com/gh/Bernie-2016/contact-texter-android.svg?style=shield&circle-token=a68fdc230e65184dd4e6b8e4e155607e6f5845ad)](https://circleci.com/gh/Bernie-2016/contact-texter-android/tree/develop)
+[![shield](https://circleci.com/gh/Bernie-2016/bernie-messenger-android.svg?style=shield&circle-token=a68fdc230e65184dd4e6b8e4e155607e6f5845ad)](https://circleci.com/gh/Bernie-2016/bernie-messenger-android/tree/develop)
 
 The Android version of Bernie Messenger.
 
