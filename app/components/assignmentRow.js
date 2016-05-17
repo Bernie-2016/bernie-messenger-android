@@ -8,6 +8,7 @@ import React, {
 import moment from 'moment';
 import Colors from '../constants/colors';
 import I18n from '../localization';
+import StyleRules from '../constants/styleRules';
 
 export default function AssignmentRow ({assignment, onPress}) {
   var expiry = getExpiry(assignment.expires);
@@ -41,7 +42,7 @@ AssignmentRow.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: StyleRules.ScreenPadding
   },
   name: {
     color: Colors.Blue.Normal,
