@@ -20,7 +20,8 @@ import StyleRules from '../constants/styleRules';
 class Assignments extends React.Component {
   static propTypes = {
     assignments: PropTypes.array.isRequired,
-    AssignmentActions: PropTypes.object.isRequired
+    AssignmentActions: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired
   };
   constructor (props) {
     var dataSource;

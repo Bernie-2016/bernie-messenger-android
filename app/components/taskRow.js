@@ -14,7 +14,8 @@ export default function TaskRow ({onPress, ...props}) {
       <TouchableHighlight
         onPress={() => onPress()}
         underlayColor={Colors.Gray.Light}
-        style={styles.container}>
+        style={styles.container}
+      >
         <View>
           <Row {...props} />
         </View>
@@ -59,5 +60,3 @@ const styles = StyleSheet.create({
     fontSize: StyleRules.FontSize.Medium
   }
 });
-
-

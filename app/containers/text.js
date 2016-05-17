@@ -7,9 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
-import Colors from '../constants/colors';
 import Screen from '../components/screen';
-import StyleRules from '../constants/styleRules';
 import TaskRow from '../components/taskRow';
 
 class TextScreen extends React.Component {
