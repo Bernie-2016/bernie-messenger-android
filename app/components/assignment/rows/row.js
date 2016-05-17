@@ -7,6 +7,7 @@ import React, {
 } from 'react-native';
 import Colors from '../../../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import StyleRules from '../../../constants/styleRules';
 
 export default function AssignmentRow ({completed, enabled, icon, onPress, text, title}) {
   return (
@@ -24,7 +25,7 @@ export default function AssignmentRow ({completed, enabled, icon, onPress, text,
         />
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text} numberOfLines={2}>{text}</Text>
         </View>
         {!enabled && <View style={styles.disabledOverlay} />}
       </View>
@@ -56,11 +57,11 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   title: {
-    fontSize: 18,
+    fontSize: StyleRules.FontSize.Small,
     color: Colors.Red.Light
   },
   text: {
-    fontSize: 22,
+    fontSize: StyleRules.FontSize.Large,
     color: Colors.Gray.Dark
   },
   disabledOverlay: {

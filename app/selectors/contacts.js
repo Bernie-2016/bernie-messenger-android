@@ -8,6 +8,13 @@ const contactsSelector = createSelector(
   (contactEntities) => {
     return Object.keys(contactEntities)
     .map(contactId => transformContactEntity(contactEntities[contactId]))
+    .reduce((contacts, contact) => {
+      var byNumber = contact.phoneNumbers.map(({number}) => ({
+        ...contact,
+        phoneNumber: number
+      }));
+      return contacts.concat(byNumber);
+    }, [])
     .sort((a, b) => {
       if (a.firstName > b.firstName) {
         return 1;

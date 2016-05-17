@@ -39,6 +39,7 @@ class Assignment extends React.Component {
           <View style={styles.heading}>
             <Text style={styles.title}>{assignment.name}</Text>
             <Text style={styles.byline}>{assignment.description}</Text>
+            <Text style={styles.byline}>{assignment.instructions}</Text>
           </View>
           <ContactRow
             contact={this.props.contact}
@@ -72,11 +73,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: StyleRules.ScreenPadding
   },
   title: {
-    fontSize: 24,
+    fontSize: StyleRules.FontSize.Large,
     color: Colors.Blue.Normal
   },
   byline: {
-    fontSize: 18,
+    fontSize: StyleRules.FontSize.Medium,
     color: Colors.Gray.Dark,
     marginTop: 10
   }

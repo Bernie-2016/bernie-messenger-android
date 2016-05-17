@@ -9,7 +9,7 @@ const {CommunicationsModule} = NativeModules;
 export function* callContact () {
   var contact = yield select(contactSelector);
   // @TODO - reference correct phone number, not just the initial
-  yield call(CommunicationsModule.createPhoneCall, contact.phoneNumbers[0].raw);
+  yield call(CommunicationsModule.createPhoneCall, contact.phoneNumber);
 }
 
 export function* textContact ({textAction}) {
@@ -18,7 +18,7 @@ export function* textContact ({textAction}) {
   var textActionMatch = textActions.filter(text => text.id === textAction);
   var message = textActionMatch.length > 0 ? textActionMatch[0].messageContent : textActions[0].messageContent;
   // @TODO - reference correct phone number, not just the initial
-  yield call(CommunicationsModule.createSMSMessage, contact.phoneNumbers[0].raw, message);
+  yield call(CommunicationsModule.createSMSMessage, contact.phoneNumber, message);
 }
 
 export function* watchCallContact () {

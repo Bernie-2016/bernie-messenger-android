@@ -8,9 +8,10 @@ export function getContacts () {
   };
 }
 
-export function selectContact (contact) {
+export function selectContact (contact, number) {
   return {
     type: Types.SELECT_CONTACT,
-    contact
+    contact,
+    number
   };
 }
