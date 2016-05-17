@@ -31,7 +31,7 @@ ContactRow.propTypes = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: StyleRules.ScreenPadding,
-    paddingVertical: 10
+    paddingVertical: 5
   },
   name: {
     fontSize: StyleRules.FontSize.Medium,
