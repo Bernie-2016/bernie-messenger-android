@@ -4,8 +4,8 @@ import React, {
   View,
   Text
 } from 'react-native';
-import * as AssignmentActionType from '../../constants/assignmentActionTypes';
-import Colors from '../../constants/colors';
+import * as AssignmentActionType from '../constants/assignmentActionTypes';
+import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function HistoryRow ({task}) {

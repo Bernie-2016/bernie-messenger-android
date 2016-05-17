@@ -7,6 +7,7 @@ import React, {
 } from 'react-native';
 import Colors from '../../../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import StyleRules from '../../../constants/styleRules';
 
 export default function AssignmentRow ({completed, enabled, icon, onPress, text, title}) {
   return (
@@ -56,11 +57,11 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   title: {
-    fontSize: 18,
+    fontSize: StyleRules.FontSize.Small,
     color: Colors.Red.Light
   },
   text: {
-    fontSize: 22,
+    fontSize: StyleRules.FontSize.Large,
     color: Colors.Gray.Dark
   },
   disabledOverlay: {

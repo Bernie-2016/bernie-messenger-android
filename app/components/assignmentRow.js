@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
   },
   name: {
     color: Colors.Blue.Normal,
-    fontSize: 16
+    fontSize: StyleRules.FontSize.Medium
   },
   expires: {
     color: Colors.Red.Light,
-    fontSize: 14
+    fontSize: StyleRules.FontSize.Small
   },
   icon: {
     color: Colors.Gray.Light

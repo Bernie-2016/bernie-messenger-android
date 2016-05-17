@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: StyleRules.ScreenPadding
   },
   title: {
-    fontSize: 24,
+    fontSize: StyleRules.FontSize.Large,
     color: Colors.Blue.Normal
   },
   byline: {
-    fontSize: 18,
+    fontSize: StyleRules.FontSize.Medium,
     color: Colors.Gray.Dark,
     marginTop: 10
   }

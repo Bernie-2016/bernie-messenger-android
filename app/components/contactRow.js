@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   name: {
-    fontSize: 16,
+    fontSize: StyleRules.FontSize.Medium,
     color: Colors.Blue.Light
   },
   phoneNumber: {
-    fontSize: 14,
+    fontSize: StyleRules.FontSize.Small,
     color: Colors.Gray.Normal
   }
 });

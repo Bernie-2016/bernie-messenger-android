@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   emptyText: {
     color: Colors.Gray.Light,
     textAlign: 'center',
-    fontSize: 18
+    fontSize: StyleRules.FontSize.Large
   }
 });
 
