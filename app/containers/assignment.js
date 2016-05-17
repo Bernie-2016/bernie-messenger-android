@@ -39,6 +39,7 @@ class Assignment extends React.Component {
           <View style={styles.heading}>
             <Text style={styles.title}>{assignment.name}</Text>
             <Text style={styles.byline}>{assignment.description}</Text>
+            <Text style={styles.byline}>{assignment.instructions}</Text>
           </View>
           <ContactRow
             contact={this.props.contact}
