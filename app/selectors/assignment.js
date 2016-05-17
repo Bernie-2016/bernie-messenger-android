@@ -43,7 +43,7 @@ export const completedCallActionsSelector = createSelector(
   assignmentSelector,
   historySelector,
   (contact, assignment, history) => {
-    var assignmentHistory = history[assignment.id];
+    const assignmentHistory = history[assignment.id] || {};
     if (contact && assignmentHistory[contact.id]) {
       return Object.keys(assignmentHistory[contact.id].callActions);
     }
@@ -56,7 +56,7 @@ export const completedTextActionsSelector = createSelector(
   assignmentSelector,
   historySelector,
   (contact, assignment, history) => {
-    var assignmentHistory = history[assignment.id];
+    const assignmentHistory = history[assignment.id] || {};
     if (contact && assignmentHistory[contact.id]) {
       return Object.keys(assignmentHistory[contact.id].textActions);
     }
