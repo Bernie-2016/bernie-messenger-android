@@ -1,4 +1,5 @@
 import React, {
+  BackAndroid,
   PropTypes,
   StyleSheet
 } from 'react-native';
@@ -18,6 +19,12 @@ class Routes extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   };
+  componentDidMount () {
+    this.backListener = BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
+  }
+  componentWillUnmount () {
+    this.backListener.remove();
+  }
   createReducer = params => {
     const defaultReducer = Reducer(params);
     return (state, action) => {
