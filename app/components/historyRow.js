@@ -7,6 +7,7 @@ import React, {
 import * as AssignmentActionType from '../constants/assignmentActionTypes';
 import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import StyleRules from '../constants/styleRules';
 
 export default function HistoryRow ({task}) {
   switch (task.type) {
@@ -82,10 +83,10 @@ const styles = StyleSheet.create({
   },
   action: {
     color: Colors.Blue.Normal,
-    fontSize: 16
+    fontSize: StyleRules.FontSize.Medium
   },
   date: {
-    fontSize: 14,
+    fontSize: StyleRules.FontSize.Small,
     color: Colors.Red.Light
   }
 });
