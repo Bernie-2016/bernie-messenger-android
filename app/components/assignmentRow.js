@@ -8,6 +8,7 @@ import React, {
 import moment from 'moment';
 import Colors from '../constants/colors';
 import I18n from '../localization';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import StyleRules from '../constants/styleRules';
 
 export default function AssignmentRow ({assignment, onPress}) {
@@ -18,11 +19,18 @@ export default function AssignmentRow ({assignment, onPress}) {
       underlayColor={Colors.Gray.Light}
       style={styles.container}
     >
-      <View>
-        <Text style={styles.expires}>
-          {I18n.t('assignments.expires', {expiry})}
-        </Text>
-        <Text style={styles.name}>{assignment.name}</Text>
+      <View style={styles.contentContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.expires}>
+            {I18n.t('assignments.expires', {expiry})}
+          </Text>
+          <Text style={styles.name}>{assignment.name}</Text>
+        </View>
+        <Icon
+          name="chevron-right"
+          style={styles.icon}
+          size={18}
+        />
       </View>
     </TouchableHighlight>
   );
@@ -42,15 +50,26 @@ AssignmentRow.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    padding: StyleRules.ScreenPadding
+    padding: StyleRules.ScreenPadding,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.Gray.Light
+  },
+  contentContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  textContainer: {
+    flex: 1
   },
   name: {
     color: Colors.Blue.Normal,
-    fontSize: 20
+    fontSize: 16
   },
   expires: {
     color: Colors.Red.Light,
-    fontSize: 16,
-    marginBottom: 10
+    fontSize: 14
+  },
+  icon: {
+    color: Colors.Gray.Light
   }
 });
