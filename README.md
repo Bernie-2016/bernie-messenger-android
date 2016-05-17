@@ -2,7 +2,7 @@
 
 [![shield](https://circleci.com/gh/Bernie-2016/bernie-messenger-android.svg?style=shield&circle-token=a68fdc230e65184dd4e6b8e4e155607e6f5845ad)](https://circleci.com/gh/Bernie-2016/bernie-messenger-android/tree/develop)
 
-Bernie Messenger helps you communicate official calls to action from the Bernie 2016 campaign with your personal contacts.
+Bernie Messenger helps you communicate official calls to action from the Bernie 2016 campaign to your personal contacts.
 
 * Help get your friends registered to vote.
 * Invite your friends to volunteer or attend campaign events.
