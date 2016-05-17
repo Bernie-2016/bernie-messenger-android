@@ -1,16 +1,14 @@
 import React, {
   ListView,
   PropTypes,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View
+  StyleSheet
 } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Screen from '../components/screen';
+import TaskRow from '../components/taskRow';
 
 class TextScreen extends React.Component {
   static propTypes = {
@@ -42,12 +40,11 @@ class TextScreen extends React.Component {
   renderRow ({id: textId, name, messageContent}) {
     var {contact, assignment} = this.props;
     return (
-      <TouchableOpacity onPress={() => this.props.AssignmentActions.textContact(contact.id, assignment.id, textId)}>
-        <View style={styles.row}>
-          <Text style={styles.title}>{name}</Text>
-          <Text style={styles.script}>{messageContent}</Text>
-        </View>
-      </TouchableOpacity>
+      <TaskRow
+        onPress={() => this.props.AssignmentActions.textContact(contact.id, assignment.id, textId)}
+        title={name}
+        message={messageContent}
+      />
     );
   }
 
@@ -67,15 +64,6 @@ class TextScreen extends React.Component {
 const styles = StyleSheet.create({
   listView: {
     flex: 1
-  },
-  row: {
-    padding: 20
-  },
-  title: {
-    fontSize: 22
-  },
-  script: {
-    fontSize: 18
   }
 });
 

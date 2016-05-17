@@ -3,8 +3,7 @@ import React, {
   PropTypes,
   StyleSheet,
   TouchableHighlight,
-  Text,
-  View
+  Text
 } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -12,6 +11,8 @@ import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Colors from '../constants/colors';
 import Screen from '../components/screen';
+import StyleRules from '../constants/styleRules';
+import TaskRow from '../components/taskRow';
 
 class Call extends React.Component {
   static propTypes = {
@@ -42,10 +43,7 @@ class Call extends React.Component {
 
   renderRow ({name, callScript}) {
     return (
-      <View style={styles.row}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.script}>{callScript}</Text>
-      </View>
+      <TaskRow title={name} message={callScript} />
     );
   }
 
@@ -74,21 +72,12 @@ const styles = StyleSheet.create({
   listView: {
     flex: 1
   },
-  row: {
-    padding: 20
-  },
-  title: {
-    fontSize: 22
-  },
-  script: {
-    fontSize: 18
-  },
   button: {
     backgroundColor: Colors.Blue.Normal,
     padding: 10
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: StyleRules.FontSize.Medium,
     color: Colors.White
   }
 });

@@ -1,15 +1,13 @@
 import React, {
   PropTypes,
   StyleSheet,
-  TouchableHighlight,
-  ListView,
-  View,
-  Text
+  ListView
 } from 'react-native';
 import {connect} from 'react-redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import selector from '../selectors/contacts';
 import * as ContactActions from '../actions/contacts';
+import ContactRow from '../components/contactRow';
 import Screen from '../components/screen';
 
 class ContactSelector extends React.Component {
@@ -49,15 +47,10 @@ class ContactSelector extends React.Component {
 
   renderRow (contact) {
     return (
-      <TouchableHighlight
-        style={styles.row}
+      <ContactRow
+        contact={contact}
         onPress={() => this.selectContact(contact)}
-      >
-        <View style={styles.inset}>
-          <Text style={styles.name}>{contact.fullName}</Text>
-          <Text style={styles.phone}>{contact.phoneNumber}</Text>
-        </View>
-      </TouchableHighlight>
+      />
     );
   }
 
@@ -77,15 +70,6 @@ class ContactSelector extends React.Component {
 const styles = StyleSheet.create({
   listView: {
     flex: 1
-  },
-  row: {
-
-  },
-  name: {
-
-  },
-  phone: {
-
   }
 });
 

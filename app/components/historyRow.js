@@ -4,9 +4,10 @@ import React, {
   View,
   Text
 } from 'react-native';
-import * as AssignmentActionType from '../../constants/assignmentActionTypes';
-import Colors from '../../constants/colors';
+import * as AssignmentActionType from '../constants/assignmentActionTypes';
+import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import StyleRules from '../constants/styleRules';
 
 export default function HistoryRow ({task}) {
   switch (task.type) {
@@ -52,8 +53,8 @@ function Row ({icon, text, time}) {
         color={Colors.Blue.Light}
       />
       <View style={styles.info}>
-        <Text>{text}</Text>
-        <Text>{time.fromNow()}</Text>
+        <Text style={styles.date}>Completed {time.fromNow()}</Text>
+        <Text style={styles.action}>{text}</Text>
       </View>
     </View>
   );
@@ -73,9 +74,19 @@ const styles = StyleSheet.create({
   row: {
     padding: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.Gray.Light
   },
   info: {
     marginLeft: 10
+  },
+  action: {
+    color: Colors.Blue.Normal,
+    fontSize: StyleRules.FontSize.Medium
+  },
+  date: {
+    fontSize: StyleRules.FontSize.Small,
+    color: Colors.Red.Light
   }
 });

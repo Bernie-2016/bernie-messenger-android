@@ -8,7 +8,7 @@ import React, {
 import {connect} from 'react-redux';
 import selector from '../selectors/history';
 import Colors from '../constants/colors';
-import HistoryRow from '../components/history/row';
+import HistoryRow from '../components/historyRow';
 import I18n from '../localization';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Screen from '../components/screen';
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   emptyText: {
     color: Colors.Gray.Light,
     textAlign: 'center',
-    fontSize: 18
+    fontSize: StyleRules.FontSize.Large
   }
 });
 
