@@ -1,4 +1,5 @@
 {
+  "empty": "There are no assignments today",
   "expires": "Expires {{expiry}}",
   "options": {
     "contact": {

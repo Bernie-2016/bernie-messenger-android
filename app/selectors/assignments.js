@@ -1,20 +1,20 @@
-import {createSelector} from 'reselect';
+import {createSelector, createStructuredSelector} from 'reselect';
 import moment from 'moment';
 
+const assignmentIdsSelector = state => state.assignments.assignments;
 const assignmentEntitiesSelector = state => state.entities.assignment;
+const loadingSelector = state => state.assignments.loading;
 
 const assignmentsSelector = createSelector(
+  assignmentIdsSelector,
   assignmentEntitiesSelector,
-  (assignmentEntities) => {
-    return Object.keys(assignmentEntities)
-      .map(assignmentId => ({
-        ...assignmentEntities[assignmentId],
-        expires: moment(assignmentEntities[assignmentId].expires)
-      }))
-  }
+  (assignments, assignmentEntities) => assignments.map(assignmentId => ({
+    ...assignmentEntities[assignmentId],
+    expires: moment(assignmentEntities[assignmentId].expires)
+  }))
 );
 
-export default createSelector(
-  assignmentsSelector,
-  (assignments) => ({assignments})
-);
+export default createStructuredSelector({
+  assignments: assignmentsSelector,
+  loading: loadingSelector
+});
