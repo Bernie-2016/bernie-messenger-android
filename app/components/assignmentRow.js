@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   expires: {
     color: Colors.Red.Light,
-    fontSize: 18,
+    fontSize: 16,
     marginBottom: 10
   }
 });

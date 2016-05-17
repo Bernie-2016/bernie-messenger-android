@@ -52,8 +52,8 @@ function Row ({icon, text, time}) {
         color={Colors.Blue.Light}
       />
       <View style={styles.info}>
-        <Text>{text}</Text>
-        <Text>{time.fromNow()}</Text>
+        <Text style={styles.date}>Completed {time.fromNow()}</Text>
+        <Text style={styles.action}>{text}</Text>
       </View>
     </View>
   );
@@ -73,9 +73,19 @@ const styles = StyleSheet.create({
   row: {
     padding: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.Gray.Light
   },
   info: {
     marginLeft: 10
+  },
+  action: {
+    color: Colors.Blue.Normal,
+    fontSize: 16
+  },
+  date: {
+    fontSize: 14,
+    color: Colors.Red.Light
   }
 });
