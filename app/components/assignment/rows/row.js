@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   row: {
     padding: 20,
     borderBottomColor: Colors.Gray.Light,
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
   inset: {
     flexDirection: 'row',
@@ -55,8 +55,7 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: 'space-between',
     marginLeft: 20,
-    flex: 1,
-    textOverflow: '...'
+    flex: 1
   },
   title: {
     fontSize: StyleRules.FontSize.Small,
