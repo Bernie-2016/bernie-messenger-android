@@ -40,7 +40,7 @@ function getExpiry (expires) {
   if (expires.isSame(moment(), 'day')) {
     return I18n.t('general.today');
   }
-  return expires.format('MMMM, Do');
+  return expires.format('MMMM Do');
 }
 
 AssignmentRow.propTypes = {
