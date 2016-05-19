@@ -1,31 +1,41 @@
 import React, {
   PropTypes,
   StyleSheet,
-  ListView
+  View,
+  Text
 } from 'react-native';
 import {connect} from 'react-redux';
+import {LETTERS} from '../constants/letters';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import selector from '../selectors/contacts';
 import * as ContactActions from '../actions/contacts';
+import AlphabetListView from 'react-native-alphabetlistview';
+import Colors from '../constants/colors';
 import ContactRow from '../components/contactRow';
 import Screen from '../components/screen';
+import StyleRules from '../constants/styleRules';
 
 class ContactSelector extends React.Component {
   static propTypes = {
-    contacts: PropTypes.array.isRequired,
+    contacts: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
   };
   constructor (props) {
-    var dataSource;
-    super(props);
+    // the letter/section map for the alphabetical list view
+    var letterMap = LETTERS.reduce((letters, letter) => ({
+      ...letters,
+      [letter]: []
+    }), {});
 
-    dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
-
-    this.state = {
-      dataSource: dataSource.cloneWithRows([])
+    // shift '#' (matches for non letters) to the bottom of the list
+    letterMap = {
+      ...letterMap,
+      '#': []
     };
+
+    super(props);
+    this.letterMapTemplate = letterMap;
+    this.state = {letterMap};
   }
 
   componentDidMount () {
@@ -34,9 +44,12 @@ class ContactSelector extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (this.props.contacts !== nextProps.contacts) {
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.contacts)
-      });
+      // merge the contacts into the complete letter map template
+      const letterMap = {
+        ...this.letterMapTemplate,
+        ...nextProps.contacts
+      };
+      this.setState({letterMap});
     }
   }
 
@@ -45,31 +58,78 @@ class ContactSelector extends React.Component {
     RouterActions.pop();
   }
 
-  renderRow (contact) {
-    return (
-      <ContactRow
-        contact={contact}
-        onPress={() => this.selectContact(contact)}
-      />
-    );
-  }
-
   render () {
     return (
       <Screen>
-        <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={contact => this.renderRow(contact)}
+        <AlphabetListView
+          data={this.state.letterMap}
+          cell={Cell}
+          cellHeight={50}
+          onCellSelect={contact => this.selectContact(contact)}
+          sectionListItem={PagerItem}
+          sectionHeader={SectionHeader}
+          sectionHeaderHeight={10}
         />
       </Screen>
     );
   }
 }
 
+/**
+ * The section header component for each letter in the list view
+ */
+function SectionHeader ({title}) {
+  return (
+    <View style={styles.sectionHeader}>
+      <Text style={styles.sectionHeaderText}>{title}</Text>
+    </View>
+  );
+}
+
+SectionHeader.propTypes = {
+  title: PropTypes.string
+};
+
+/**
+ * The letter component for the side-pager
+ */
+function PagerItem ({title}) {
+  return (
+    <Text style={styles.sectionPagerText}>{title}</Text>
+  );
+}
+
+PagerItem.propTypes = {
+  title: PropTypes.string
+};
+
+/**
+ * The cell wrapper for each row
+ */
+function Cell ({item, onSelect}) {
+  return (
+    <ContactRow
+      onPress={() => onSelect(item)}
+      contact={item}
+    />
+  );
+}
+
+Cell.propTypes = {
+  item: PropTypes.object.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
+
 const styles = StyleSheet.create({
-  listView: {
-    flex: 1
+  sectionHeader: {
+    paddingHorizontal: StyleRules.ScreenPadding / 2,
+    backgroundColor: Colors.Gray.Light
+  },
+  sectionHeaderText: {
+    color: Colors.White
+  },
+  sectionPagerText: {
+    color: Colors.Blue.Light
   }
 });
 
