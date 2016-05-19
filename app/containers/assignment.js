@@ -5,11 +5,13 @@ import React, {
   View,
   Text
 } from 'react-native';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Colors from '../constants/colors';
+import I18n from '../localization';
 import StyleRules from '../constants/styleRules';
 import Screen from '../components/screen';
 import ContactRow from '../components/assignment/rows/contact';
@@ -18,21 +20,42 @@ import TextRow from '../components/assignment/rows/text';
 
 class Assignment extends React.Component {
   static propTypes = {
+    AssignmentActions: PropTypes.object.isRequired,
     assignment: PropTypes.object.isRequired,
     completedCalls: PropTypes.array.isRequired,
     completedTexts: PropTypes.array.isRequired,
-    contact: PropTypes.object,
-    dispatch: PropTypes.func.isRequired
+    contact: PropTypes.object
   };
+
   componentWillUnmount () {
-    this.props.dispatch(AssignmentActions.resetAssignment());
+    this.props.AssignmentActions.resetAssignment();
   }
+
+  getTextRowText () {
+    return this.props.assignment.textActions.length === 1 ?
+      this.props.assignment.textActions[0].name :
+      I18n.t('assignments.options.text.select');
+  }
+
+  tapTextRow () {
+    var {assignment, contact} = this.props;
+    if (assignment.textActions.length > 1) {
+      // if there are more than one text actions, go to the selection screen
+      RouterActions.text();
+    } else {
+      // if there is only one text action, go right ahead and text the contact
+      const textAction = assignment.textActions[0];
+      this.props.AssignmentActions.textContact(contact.id, assignment.id, textAction.id);
+    }
+  }
+
   render () {
     var {
       assignment,
       completedCalls,
       completedTexts
     } = this.props;
+
     return (
       <Screen>
         <ScrollView>
@@ -58,8 +81,8 @@ class Assignment extends React.Component {
               contact={this.props.contact}
               completed={completedTexts.length > 0}
               enabled={!!this.props.contact && (!assignment.requireCallFirst || completedCalls.length > 0)}
-              textAction={assignment.textActions[0]}
-              onPress={() => RouterActions.text()}
+              text={this.getTextRowText()}
+              onPress={() => this.tapTextRow()}
             />
           }
         </ScrollView>
@@ -83,4 +106,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(selector)(Assignment);
+const actions = dispatch => ({
+  AssignmentActions: bindActionCreators(AssignmentActions, dispatch)
+});
+
+export default connect(selector, actions)(Assignment);

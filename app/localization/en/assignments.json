@@ -10,7 +10,8 @@
       "title": "Call Person"
     },
     "text": {
-      "title": "Text Person"
+      "title": "Text Person",
+      "select": "Select a text"
     }
   }
 }
