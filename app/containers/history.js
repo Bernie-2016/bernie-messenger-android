@@ -7,6 +7,8 @@ import React, {
 } from 'react-native';
 import {connect} from 'react-redux';
 import selector from '../selectors/history';
+import * as Analytics from '../utils/analytics';
+import * as AnalyticsEvents from '../constants/analytics';
 import Colors from '../constants/colors';
 import HistoryRow from '../components/historyRow';
 import I18n from '../localization';
@@ -29,6 +31,10 @@ class History extends React.Component {
     this.state = {
       dataSource: dataSource.cloneWithRows(this.props.history)
     };
+  }
+
+  componentDidMount () {
+    Analytics.logEvent(AnalyticsEvents.VIEW_HISTORY);
   }
 
   render () {
