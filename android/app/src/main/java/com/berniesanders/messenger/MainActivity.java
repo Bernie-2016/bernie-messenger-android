@@ -1,4 +1,4 @@
-package com.contacttexter;
+package com.berniesanders.messenger;
 
 import com.facebook.react.ReactActivity;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;

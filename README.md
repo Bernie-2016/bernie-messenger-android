@@ -28,6 +28,10 @@ The Revolution starts with getting millions of new people involved in the politi
   react-native run-android
   ```
 
+## Building and signing for app store releases
+
+_Please contact [@ajwhite](https://github.com/ajwhite) or [@jlegrone](https://github.com/jlegrone)_
+
 ## Contributing
 
 Please submit all Pull Requests from your fork to `develop`. If your changes touch code, please make sure to run `npm
