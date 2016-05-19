@@ -1,8 +1,14 @@
-# Bernie Messenger
+# Bernie Messenger for Android
 
 [![shield](https://circleci.com/gh/Bernie-2016/bernie-messenger-android.svg?style=shield&circle-token=a68fdc230e65184dd4e6b8e4e155607e6f5845ad)](https://circleci.com/gh/Bernie-2016/bernie-messenger-android/tree/develop)
 
-The Android version of Bernie Messenger.
+Bernie Messenger helps you communicate official calls to action from the Bernie 2016 campaign to your personal contacts.
+
+* Help get your friends registered to vote.
+* Invite your friends to volunteer or attend campaign events.
+* Organize with friends to get out the vote!
+
+The Revolution starts with getting millions of new people involved in the political process. If we stand together, there's nothing that we cannot accomplish.
 
 ## Installation
 
@@ -21,6 +27,10 @@ The Android version of Bernie Messenger.
   ```
   react-native run-android
   ```
+
+## Building and signing for app store releases
+
+_Please contact [@ajwhite](https://github.com/ajwhite) or [@jlegrone](https://github.com/jlegrone)_
 
 ## Contributing
 

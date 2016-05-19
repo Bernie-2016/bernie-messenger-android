@@ -1,4 +1,4 @@
-package com.contacttexter;
+package com.berniesanders.messenger;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -36,9 +36,8 @@ public class CommunicationsModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void createSMSMessage(String number, String message) {
-        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
-        smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address", number);
+        Uri uri = Uri.parse("smsto:" + number);
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO, uri);
         smsIntent.putExtra("sms_body", message);
         activity.startActivity(smsIntent);
     }

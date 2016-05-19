@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
   },
   content: {
     justifyContent: 'space-between',
-    marginLeft: 20
+    marginLeft: 20,
+    flex: 1
   },
   title: {
     fontSize: StyleRules.FontSize.Small,
