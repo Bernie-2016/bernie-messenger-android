@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
 import com.facebook.react.ReactActivity;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -50,7 +49,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new CommunicationsPackage(this),
+            new NativePackages(this),
             new ReactNativeContacts(),
             new VectorIconsPackage()
         );
