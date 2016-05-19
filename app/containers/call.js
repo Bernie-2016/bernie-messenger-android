@@ -1,17 +1,13 @@
 import React, {
   ListView,
   PropTypes,
-  StyleSheet,
-  TouchableHighlight,
-  Text
+  StyleSheet
 } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
-import Colors from '../constants/colors';
 import Screen from '../components/screen';
-import StyleRules from '../constants/styleRules';
 import TaskRow from '../components/taskRow';
 
 class Call extends React.Component {
@@ -41,15 +37,18 @@ class Call extends React.Component {
     }
   }
 
-  renderRow ({name, callScript}) {
+  renderRow ({id: callId, name, callScript}) {
+    var {assignment, contact} = this.props;
     return (
-      <TaskRow title={name} message={callScript} />
+      <TaskRow
+        onPress={() => this.props.AssignmentActions.callContact(contact.id, assignment.id, callId)}
+        title={name}
+        message={callScript}
+      />
     );
   }
 
   render () {
-    var {assignment, contact} = this.props;
-    var callAction = assignment.callActions[0];
     return (
       <Screen>
         <ListView
@@ -57,12 +56,6 @@ class Call extends React.Component {
           dataSource={this.state.dataSource}
           renderRow={data => this.renderRow(data)}
         />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.AssignmentActions.callContact(contact.id, assignment.id, callAction.id)}
-        >
-          <Text style={styles.buttonText}>Call</Text>
-        </TouchableHighlight>
       </Screen>
     );
   }
@@ -71,14 +64,6 @@ class Call extends React.Component {
 const styles = StyleSheet.create({
   listView: {
     flex: 1
-  },
-  button: {
-    backgroundColor: Colors.Blue.Normal,
-    padding: 10
-  },
-  buttonText: {
-    fontSize: StyleRules.FontSize.Medium,
-    color: Colors.White
   }
 });
 
