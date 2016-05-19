@@ -10,6 +10,8 @@ Bernie Messenger helps you communicate official calls to action from the Bernie 
 
 The Revolution starts with getting millions of new people involved in the political process. If we stand together, there's nothing that we cannot accomplish.
 
+<a href="https://play.google.com/store/apps/details?id=com.berniesanders.messenger&amp;utm_source=global_co&amp;utm_medium=prtnr&amp;utm_content=Mar2515&amp;utm_campaign=PartBadge&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="play-store"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200"></a>
+
 ## Installation
 
 1. Clone the project

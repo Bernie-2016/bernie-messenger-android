@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import {LETTERS} from '../constants/letters';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import selector from '../selectors/contacts';
+import * as Analytics from '../utils/analytics';
+import * as AnalyticsEvents from '../constants/analytics';
 import * as ContactActions from '../actions/contacts';
 import AlphabetListView from 'react-native-alphabetlistview';
 import Colors from '../constants/colors';
@@ -55,6 +57,7 @@ class ContactSelector extends React.Component {
 
   selectContact (contact) {
     this.props.dispatch(ContactActions.selectContact(contact.id, contact.phoneNumber));
+    Analytics.logEvent(AnalyticsEvents.SELECT_CONTACT);
     RouterActions.pop();
   }
 

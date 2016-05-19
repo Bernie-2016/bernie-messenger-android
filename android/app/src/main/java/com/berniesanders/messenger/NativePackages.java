@@ -15,10 +15,10 @@ import java.util.ArrayList;
 /**
  * Created by ajwhite on 5/3/16.
  */
-public class CommunicationsPackage implements ReactPackage {
+public class NativePackages implements ReactPackage {
     private Activity activity;
 
-    public CommunicationsPackage(Activity activity) {
+    public NativePackages(Activity activity) {
         this.activity = activity;
     }
 
@@ -26,6 +26,7 @@ public class CommunicationsPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactApplicationContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new CommunicationsModule(reactApplicationContext, activity));
+        modules.add(new AnswersModule(reactApplicationContext));
         return modules;
     }
 
