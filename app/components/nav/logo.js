@@ -4,12 +4,10 @@ import React, {
   StyleSheet
 } from 'react-native';
 
-const img = 'https://i.imgur.com/0WmCDfz.png';
-
 export default function NavLogo () {
   return (
     <Image
-      source={{uri: img}}
+      source={require('../../assets/images/bernie_logo.png')}
       style={styles.logo}
       resizeMode="contain"
     />
