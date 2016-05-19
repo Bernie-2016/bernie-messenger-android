@@ -1,4 +1,4 @@
-package com.contacttexter;
+package com.berniesanders.messenger;
 
 import android.app.Activity;
 
