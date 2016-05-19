@@ -9,6 +9,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import * as AssignmentActions from '../actions/assignments';
+import * as AnalyticsEvents from '../constants/analytics';
+import * as Analytics from '../utils/analytics';
 import selector from '../selectors/assignments';
 import AssignmentRow from '../components/assignmentRow';
 import Colors from '../constants/colors';
@@ -34,6 +36,10 @@ class Assignments extends React.Component {
     this.state = {
       dataSource: dataSource.cloneWithRows([])
     };
+  }
+
+  componentDidMount () {
+    Analytics.logEvent(AnalyticsEvents.VIEW_ASSIGNMENTS);
   }
 
   componentWillReceiveProps (nextProps) {
