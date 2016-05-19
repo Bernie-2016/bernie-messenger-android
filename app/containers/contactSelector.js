@@ -22,10 +22,16 @@ class ContactSelector extends React.Component {
   };
   constructor (props) {
     // the letter/section map for the alphabetical list view
-    const letterMap = LETTERS.reduce((letters, letter) => ({
+    var letterMap = LETTERS.reduce((letters, letter) => ({
       ...letters,
       [letter]: []
-    }), {'#': []});
+    }), {});
+
+    // shift '#' (matches for non letters) to the bottom of the list
+    letterMap = {
+      ...letterMap,
+      '#': []
+    };
 
     super(props);
     this.letterMapTemplate = letterMap;
