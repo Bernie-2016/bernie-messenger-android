@@ -56,7 +56,7 @@ function Row ({icon, text, time}) {
       </View>
       <View style={styles.info}>
         <Text style={styles.date}>Completed {time.fromNow()}</Text>
-        <Text style={styles.action}>{text}</Text>
+        <Text style={styles.action} numberOfLines={1}>{text}</Text>
       </View>
     </View>
   );
