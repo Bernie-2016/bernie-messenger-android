@@ -16,8 +16,8 @@ export default function ContactRow ({contact, onPress}) {
       style={styles.container}
     >
       <View>
-        <Text style={styles.name}>{contact.fullName}</Text>
-        <Text style={styles.phoneNumber}>{contact.phoneNumber}</Text>
+        <Text style={styles.name} numberOfLines={1}>{contact.fullName}</Text>
+        <Text style={styles.phoneNumber} numberOfLines={1}>{contact.phoneNumber}</Text>
       </View>
     </TouchableHighlight>
   );

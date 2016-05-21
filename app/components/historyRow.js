@@ -28,7 +28,7 @@ function CallRow ({task: {contact, completed}}) {
   return (
     <Row
       icon="phone"
-      text={`Called ${contact.firstName}`}
+      text={`Called ${contact.fullName}`}
       time={completed}
     />
   );
@@ -38,7 +38,7 @@ function TextRow ({task: {contact, completed}}) {
   return (
     <Row
       icon="comment"
-      text={`Texted ${contact.firstName}`}
+      text={`Texted ${contact.fullName}`}
       time={completed}
     />
   );
@@ -47,14 +47,16 @@ function TextRow ({task: {contact, completed}}) {
 function Row ({icon, text, time}) {
   return (
     <View style={styles.row}>
-      <Icon
-        name={icon}
-        size={24}
-        color={Colors.Blue.Light}
-      />
+      <View style={styles.iconContainer}>
+        <Icon
+          name={icon}
+          size={24}
+          color={Colors.Blue.Light}
+        />
+      </View>
       <View style={styles.info}>
         <Text style={styles.date}>Completed {time.fromNow()}</Text>
-        <Text style={styles.action}>{text}</Text>
+        <Text style={styles.action} numberOfLines={1}>{text}</Text>
       </View>
     </View>
   );
@@ -77,6 +79,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: Colors.Gray.Light
+  },
+  iconContainer: {
+    width: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   info: {
     marginLeft: 10
