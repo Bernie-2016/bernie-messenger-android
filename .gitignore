@@ -41,3 +41,6 @@ android/keystores/debug.keystore
 
 *.keystore
 fabric.properties
+crashlytics-build.properties
+com_crashlytics_export_strings.xml
+
