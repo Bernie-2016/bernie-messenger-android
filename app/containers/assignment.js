@@ -9,7 +9,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Actions as RouterActions} from 'react-native-router-flux';
 import * as Analytics from '../utils/analytics';
-import * as AnalyticsEvents from '../constants/analytics';
 import * as AssignmentActions from '../actions/assignments';
 import selector from '../selectors/assignment';
 import Colors from '../constants/colors';
@@ -30,7 +29,7 @@ class Assignment extends React.Component {
   };
 
   componentDidMount () {
-    Analytics.logEvent(AnalyticsEvents.SELECT_ASSIGNMENT, {assignment: this.props.assignment.id});
+    Analytics.logAssignment(this.props.assignment.id);
   }
 
   componentWillUnmount () {
